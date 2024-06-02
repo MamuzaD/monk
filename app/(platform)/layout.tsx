@@ -5,7 +5,6 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
-import "./globals.css";
 
 export default function PlatformLayout({
   children,
