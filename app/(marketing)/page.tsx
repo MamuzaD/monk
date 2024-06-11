@@ -3,7 +3,6 @@ import { PT_Sans } from "next/font/google";
 import { Medal } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Logo } from "@/components/logo";
 
 const textFont = PT_Sans({
   subsets: ["latin"],
@@ -12,16 +11,16 @@ const textFont = PT_Sans({
 
 const MarketingPage = () => {
   return (
-    <div className="flex items-center justify-center flex-col">
+    <div className="pt-24 flex items-center justify-center flex-col">
       <div className="flex items-center justify-center flex-col">
-        <h1 className="text-3xl md:text-6xl text-center pt-9 text-neutral-800 mb-6">
+        <h1 className="text-3xl md:text-6xl text-center pt-9 text-neutral-800 mb-6 font-extrabold">
           Min Kanban
         </h1>
         <div className="mb-4 flex items-center border shadow-sm p-4 bg-amber-100 text-amber-700 rounded-full uppercase">
           <Medal className="h-6 w-6 mr-2" />
           minimal task management
         </div>
-        <div className="text-3xl md:text-6xl text-center bg-gradient-to-r from-sky-800 to-cyan-500 text-white px-4 p-4 rounded-md w-f">
+        <div className="text-3xl md:text-6xl text-center bg-gradient-to-r from-sky-800 to-cyan-500 text-white px-4 p-4 rounded-md w-full font-serif">
           any name is fine here
         </div>
       </div>
@@ -35,13 +34,7 @@ const MarketingPage = () => {
       </div>
       <Button variant="secondary" className="mt-6" size="lg" asChild>
         <Link href="/sign-up">Continue ahead</Link>
-      </Button>
-
-      <div className="flex items-center justify-center flex-col mt-20 bg-slate-500 mx-auto p-10">
-        <h2 className="text-2xl md:text-4xl text-center">
-          unlimited boards for your unlimited tasks
-        </h2>
-      </div>
+      </Button> 
     </div>
   );
 };

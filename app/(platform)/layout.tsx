@@ -1,10 +1,4 @@
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export default function PlatformLayout({
   children,
@@ -13,7 +7,7 @@ export default function PlatformLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      {/* <html lang="en">
         <body>
           <header>
             <SignedOut>
@@ -22,10 +16,10 @@ export default function PlatformLayout({
             <SignedIn>
               <UserButton />
             </SignedIn>
-          </header>
-          <main>{children}</main>
-        </body>
-      </html>
+          </header> */}
+      {children}
+      {/* </body>
+      </html> */}
     </ClerkProvider>
   );
 }
