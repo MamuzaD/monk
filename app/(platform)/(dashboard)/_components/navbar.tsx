@@ -1,7 +1,8 @@
-import { Logo } from "@/components/logo";
-import { Button } from "@/components/ui/button";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import { Plus } from "lucide-react";
+import { Logo } from "@/components/logo";
+import { Button } from "@/components/ui/button";
+import { FormPopover } from "@/components/form/form-popover";
 import { MobileSidebar } from "./mobile-sidebar";
 
 export const Navbar = () => {
@@ -39,9 +40,17 @@ export const Navbar = () => {
             },
           }}
         />
-        <Button size={"sm"} className="rounded-full block p-2 h-auto w-auto">
-          <Plus className="h-4 w-4" />
-        </Button>
+        <FormPopover align="start" side="bottom" sideOffset={16}>
+          <Button
+            size={"sm"}
+            className="rounded-full block p-2 h-auto w-auto mr-4 hover:opacity-80 md:rounded-xl"
+          >
+            <span className="hidden md:block px-2">Create</span>
+            <span className="block md:hidden">
+              <Plus className="h-4 w-4" />
+            </span>
+          </Button>
+        </FormPopover>
       </div>
     </nav>
   );

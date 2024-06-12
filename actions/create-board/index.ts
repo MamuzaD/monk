@@ -41,13 +41,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
 
-    console.log({
-        imageId,
-        imageThumbUrl,
-        imageFullUrl,
-        imageLinkHTML,
-        imageUsername,
-    })
   } catch (error) {
     console.log({
       error

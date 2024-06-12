@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
-import { Check, Loader } from "lucide-react";
+import { Check, Loader, RefreshCcwIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,6 +10,7 @@ import { unsplash } from "@/lib/unsplash";
 import { cn } from "@/lib/utils";
 import { basicImages } from "@/constants/images";
 import { FormError } from "./form-error";
+import { Button } from "../ui/button";
 
 interface FormPickerProps {
   id: string;
@@ -23,12 +24,12 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedImageId, setSelectedImageId] = useState(null);
 
-  useEffect(() => {
+  const refresh = useEffect(() => {
     const fetchImages = async () => {
       try {
         const result = await unsplash.photos.getRandom({
           collectionIds: ["317099"],
-          count: 9,
+          count: 4,
         });
 
         if (result && result.response) {
@@ -57,7 +58,7 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
 
   return (
     <div className="relative">
-      <div className="grid grid-cols-3 gap-2 my-2">
+      <div className="grid grid-cols-2 gap-2 my-2">
         {images.map((image) => (
           <div
             key={image.id}
