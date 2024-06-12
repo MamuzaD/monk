@@ -22,8 +22,8 @@ export const Navbar = () => {
           appearance={{
             elements: {
               avatarBox: {
-                height: 30,
-                width: 30,
+                height: 32,
+                width: 32,
               },
             },
           }}
@@ -33,13 +33,13 @@ export const Navbar = () => {
           appearance={{
             elements: {
               avatarBox: {
-                height: 30,
-                width: 30,
+                height: 32,
+                width: 32,
               },
             },
           }}
         />
-        <Button size={"sm"} className="rounded-full block">
+        <Button size={"sm"} className="rounded-full block p-2 h-auto w-auto">
           <Plus className="h-4 w-4" />
         </Button>
       </div>

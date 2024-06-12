@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import { ClerkProvider } from "@clerk/nextjs";
 
 export default function PlatformLayout({
@@ -7,19 +8,8 @@ export default function PlatformLayout({
 }) {
   return (
     <ClerkProvider>
-      {/* <html lang="en">
-        <body>
-          <header>
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </header> */}
+      <Toaster />
       {children}
-      {/* </body>
-      </html> */}
     </ClerkProvider>
   );
 }
