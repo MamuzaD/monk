@@ -1,10 +1,11 @@
+import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 
 const AboutPage = () => {
   return (
     <div className="flex flex-col items-center justify-center text-center">
       <h1 className="font-bold text-3xl md:text-6xl">About Min Kanban</h1>
-      <hr className="w-1/2 xl:w-2/6 mt-2 h-1 bg-neutral-800" />
+      <Separator className="mt-2" />
       <div className="text-xl md:text-2xl mt-10 w-1/2 [&>p]:mt-8">
       <p>
         The first ever time I heard the idea of an kanban board was on the first
