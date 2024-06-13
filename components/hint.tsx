@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import {
   Tooltip,
   TooltipContent,
@@ -8,6 +9,7 @@ import {
 interface HintProps {
   children: React.ReactNode;
   description: string;
+  className: string;
   side?: "top" | "right" | "bottom" | "left";
   sideOffset?: number;
 }
@@ -19,6 +21,7 @@ export const Hint = ({
   description,
   side = "bottom",
   sideOffset = 0,
+  className,
 }: HintProps) => {
   return (
     <TooltipProvider>
@@ -27,7 +30,7 @@ export const Hint = ({
         <TooltipContent
           sideOffset={sideOffset}
           side={side}
-          className="text-sm max-w[220px] break-words"
+          className={cn("text-sm max-w[220px] break-words", className)}
         >
           {description}
         </TooltipContent>

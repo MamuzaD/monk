@@ -10,7 +10,7 @@ import { CreateBoard } from "./schema";
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
 
-  if (!userId || !orgId) return { error: "unauthorized" };
+  if (!userId || !orgId) return { error: "unauthorized to create" };
 
   const { title, image } = data;
 
@@ -45,7 +45,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     console.log({
       error
     });
-    return { error: "Database error" };
+    return { error: "Database error when creating" };
   }
 
   revalidatePath(`/board/${board.id}`);

@@ -31,7 +31,7 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
       disabled,
       errors,
       className,
-      defaultValue = " ",
+      defaultValue = "",
       onBlur,
     },
     ref
