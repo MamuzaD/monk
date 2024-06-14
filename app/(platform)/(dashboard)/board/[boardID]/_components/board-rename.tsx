@@ -35,7 +35,6 @@ export const BoardRename = ({ board }: BoardRenameProps) => {
     setIsEditing(true);
     setTimeout(() => {
       inputRef.current?.focus();
-      inputRef.current?.select();
     });
   };
 
@@ -45,6 +44,9 @@ export const BoardRename = ({ board }: BoardRenameProps) => {
 
   const onSubmit = (formData: FormData) => {
     const title = formData.get("title") as string;
+
+    if (title === board.title) return disableEditing();
+
     execute({ title, id: board.id });
   };
 
@@ -71,18 +73,16 @@ export const BoardRename = ({ board }: BoardRenameProps) => {
 
   return (
     <Hint
-        description="Rename Board"
-        className="text-xs font-normal text-neutral-800"
-        
-      >
-    <Button
-      onClick={enableEditing}
-      className="font-bold text-lg h-auto w-auto -1 px-2"
-      variant="transparent"
+      description="Rename Board"
+      className="text-xs font-normal text-neutral-800"
     >
-      
+      <Button
+        onClick={enableEditing}
+        className="font-bold text-lg h-auto w-auto -1 px-2"
+        variant="transparent"
+      >
         {title}
-    </Button>
+      </Button>
     </Hint>
   );
 };

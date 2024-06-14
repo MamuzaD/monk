@@ -17,10 +17,10 @@ import { toast } from "sonner";
 
 interface ListOptionsProps {
   list: List;
-  AddCard: () => void;
+  onAddCard: () => void;
 }
 
-export const ListOptions = ({ list, AddCard }: ListOptionsProps) => {
+export const ListOptions = ({ list, onAddCard }: ListOptionsProps) => {
   const closeRef = useRef<ElementRef<"button">>(null);
 
   const { execute: executeDelete } = useAction(deleteList, {
@@ -36,6 +36,11 @@ export const ListOptions = ({ list, AddCard }: ListOptionsProps) => {
   const onDelete = (formData: FormData) => {
     const id = formData.get("id") as string;
     const boardId = formData.get("boardId") as string;
+
+    console.log({
+      id,
+      boardId
+    })
 
     executeDelete({ id, boardId });
   };
@@ -77,7 +82,7 @@ export const ListOptions = ({ list, AddCard }: ListOptionsProps) => {
           </Button>
         </PopoverClose>
         <Button
-          onClick={AddCard}
+          onClick={onAddCard}
           className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"
           variant="ghost"
         >
@@ -85,18 +90,18 @@ export const ListOptions = ({ list, AddCard }: ListOptionsProps) => {
         </Button>
         <form action={onCopy}>
           <input name="id" id="id" value={list.id} hidden />
-          <input name="boardID" id="boardId" value={list.boardId} hidden />
+          <input name="boardId" id="boardId" value={list.boardId} hidden />
           <FormSubmit
             variant="ghost"
             className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"
           >
             Copy list
-          </FormSubmit>x
+          </FormSubmit>
         </form>
         <Separator />
         <form action={onDelete}>
           <input name="id" id="id" value={list.id} hidden />
-          <input name="boardID" id="boardId" value={list.boardId} hidden />
+          <input name="boardId" id="boardId" value={list.boardId} hidden />
           <FormSubmit
             variant="ghost"
             className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"

@@ -1,7 +1,7 @@
 "use client";
 
 import { MoreHorizontal, X } from "lucide-react";
-import { deleteBoard } from "@/actions/board/delete-board";
+import { deleteBoard } from "@/actions/board-actions/delete-board";
 import { useAction } from "@/hooks/use-action";
 import { Button } from "@/components/ui/button";
 import {
@@ -60,7 +60,7 @@ export const BoardOptions = ({ id }: BoardOptionsProps) => {
           variant="ghost"
           disabled={isLoading}
           onClick={onDelete}
-          className="rounded-non w-full h-auto p-2 px-5 justify-start font-normal text-sm"
+          className="rounded-non w-full h-auto p-2 px-5 justify-start font-normal"
         >
           Delete Board
         </Button>

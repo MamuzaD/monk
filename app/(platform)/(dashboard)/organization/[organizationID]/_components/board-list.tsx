@@ -6,6 +6,7 @@ import { FormPopover } from "@/components/form/form-popover";
 import { Hint } from "@/components/hint";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
+import { BoardContextMenu } from "../../../board/[boardId]/_components/board-contextmenu";
 
 export const BoardList = async () => {
   const { orgId } = auth();
@@ -29,18 +30,21 @@ export const BoardList = async () => {
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {boards.map((board) => (
-          <Link
-            key={board.id}
-            href={`/board/${board.id}`}
-            style={{ backgroundImage: `url(${board.imageThumbUrl})` }}
-            className="group relative aspect-video bg-no-repeat bg-center bg-cover bg-neutral-400 rounded-sm h-full w-full p-2 overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/60 transition" />
-            <p className="relative font-light text-white top-3/4">
-              {board.title}
-            </p>
-          </Link>
+          <BoardContextMenu>
+            <Link
+              key={board.id}
+              href={`/board/${board.id}`}
+              style={{ backgroundImage: `url(${board.imageThumbUrl})` }}
+              className="group relative aspect-video bg-no-repeat bg-center bg-cover bg-neutral-400 rounded-sm h-full w-full p-2 overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/60 transition" />
+              <p className="relative font-light text-white top-3/4">
+                {board.title}
+              </p>
+            </Link>
+          </BoardContextMenu>
         ))}
+
         <FormPopover side="right" sideOffset={10}>
           <div
             role="button"

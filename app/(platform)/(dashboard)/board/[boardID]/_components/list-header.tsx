@@ -11,9 +11,10 @@ import { ListOptions } from "./list-options";
 
 interface ListHeaderProps {
   list: List;
+  onAddCard: () => void;
 }
 
-export const ListHeader = ({ list }: ListHeaderProps) => {
+export const ListHeader = ({ list, onAddCard }: ListHeaderProps) => {
   const [title, setTitle] = useState(list.title);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -24,8 +25,7 @@ export const ListHeader = ({ list }: ListHeaderProps) => {
     setIsEditing(true);
     setTimeout(() => {
       inputRef.current?.focus();
-      inputRef.current?.select();
-    }, 0);
+    });
   };
 
   const disableEditing = () => {
