@@ -66,7 +66,7 @@ export const BoardRename = ({ board }: BoardRenameProps) => {
           ref={inputRef}
           onBlur={onBlur}
           defaultValue={title}
-          className="text-lg font-bold px-[7px] mb-4 h-5 bg-transparent focus-visible:outline-none focus-visible:ring-transparent border-none absolute"
+          className="text-lg font-bold px-[7px] py-1 h-7 bg-transparent focus-visible:outline-none focus-visible:ring-transparent border-none"
         />
       </form>
     );
@@ -78,7 +78,7 @@ export const BoardRename = ({ board }: BoardRenameProps) => {
     >
       <Button
         onClick={enableEditing}
-        className="font-bold text-lg h-auto w-auto -1 px-2"
+        className="font-bold text-lg h-auto w-auto -1 px-2 py-0.5"
         variant="transparent"
       >
         {title}

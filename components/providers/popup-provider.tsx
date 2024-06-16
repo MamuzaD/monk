@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CardPopup } from "../card-popup";
+import { CardModal } from "../card-modal";
 
 export const PopupProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -14,7 +14,7 @@ export const PopupProvider = () => {
 
   return (
     <>
-    <CardPopup />
+    <CardModal />
     </>
   )
 }

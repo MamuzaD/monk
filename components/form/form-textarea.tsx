@@ -9,7 +9,7 @@ import { FormError } from "./form-error";
 
 interface FormTextareaProps {
   id: string;
-  name: string;
+  name?: string;
   label?: string;
   placeholder?: string;
   required?: boolean;
