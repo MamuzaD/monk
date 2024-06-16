@@ -2,6 +2,7 @@
 
 import { Card } from "@prisma/client";
 import { Draggable } from "@hello-pangea/dnd"
+import { useCardPopup } from "@/hooks/use-card";
 
 interface CardItemProps {
   card: Card;
@@ -9,6 +10,9 @@ interface CardItemProps {
 }
 
 export const CardItem = ({ card, index }: CardItemProps) => {
+  const cardPopup = useCardPopup ();
+
+  console.log(card); 
   return (
     <Draggable draggableId={card.id} index={index}>
       {(provided) => (
@@ -17,6 +21,7 @@ export const CardItem = ({ card, index }: CardItemProps) => {
           {...provided.dragHandleProps}
           ref={provided.innerRef}
           role="button"
+          onClick={() => cardPopup.onOpen((card.id))}
           className="truncate border-2 border-transparent hover:border-black/40 py-2 px-3 text-sm bg-white rounded-md shadow-sm"
         >
           {card.title}

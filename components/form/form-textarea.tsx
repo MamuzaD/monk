@@ -67,7 +67,7 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
             onClick={onClick}
             onKeyDown={onKeyDown}
             ref={ref}
-            area-describedBy={`${id}-error`}
+            area-describedby={`${id}-error`}
             defaultValue={defaultValue}
           />
         </div>

@@ -1,6 +1,6 @@
 import { useRef, ElementRef } from "react";
 import { List } from "@prisma/client";
-import { MoreHorizontal, X } from "lucide-react";
+import { MoreHorizontal, TextCursorInput, X } from "lucide-react";
 import { useAction } from "@/hooks/use-action";
 import { deleteList } from "@/actions/delete-list";
 import { copyList } from "@/actions/copy-list";
@@ -14,13 +14,15 @@ import { Button } from "@/components/ui/button";
 import { FormSubmit } from "@/components/form/form-submit";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
+import { Input } from "@/components/ui/input";
 
 interface ListOptionsProps {
   list: List;
   onAddCard: () => void;
+  rename: () =>  void;
 }
 
-export const ListOptions = ({ list, onAddCard }: ListOptionsProps) => {
+export const ListOptions = ({ list, onAddCard, rename }: ListOptionsProps) => {
   const closeRef = useRef<ElementRef<"button">>(null);
 
   const { execute: executeDelete } = useAction(deleteList, {
@@ -36,11 +38,6 @@ export const ListOptions = ({ list, onAddCard }: ListOptionsProps) => {
   const onDelete = (formData: FormData) => {
     const id = formData.get("id") as string;
     const boardId = formData.get("boardId") as string;
-
-    console.log({
-      id,
-      boardId
-    })
 
     executeDelete({ id, boardId });
   };
@@ -65,7 +62,11 @@ export const ListOptions = ({ list, onAddCard }: ListOptionsProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button className="h-auto w-auto p-2" variant="ghost">
+        <Button
+          className="h-auto w-auto p-2"
+          variant="ghost"
+          aria-labelledby="list options"
+        >
           <MoreHorizontal className="h-4 w-4" />
         </Button>
       </PopoverTrigger>
@@ -88,9 +89,22 @@ export const ListOptions = ({ list, onAddCard }: ListOptionsProps) => {
         >
           Add card
         </Button>
+        <Button
+          onClick={rename}
+          className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"
+          variant="ghost"
+        >
+          Rename list
+        </Button>
         <form action={onCopy}>
-          <input name="id" id="id" value={list.id} hidden />
-          <input name="boardId" id="boardId" value={list.boardId} hidden />
+          <input name="id" id="id" defaultValue={list.id} hidden />
+          <input
+            name="boardId"
+            id="boardId"
+            defaultValue={list.boardId}
+            hidden
+          />
+
           <FormSubmit
             variant="ghost"
             className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"
@@ -98,10 +112,14 @@ export const ListOptions = ({ list, onAddCard }: ListOptionsProps) => {
             Copy list
           </FormSubmit>
         </form>
-        <Separator />
         <form action={onDelete}>
-          <input name="id" id="id" value={list.id} hidden />
-          <input name="boardId" id="boardId" value={list.boardId} hidden />
+          <input name="id" id="id" defaultValue={list.id} hidden />
+          <input
+            name="boardId"
+            id="boardId"
+            defaultValue={list.boardId}
+            hidden
+          />
           <FormSubmit
             variant="ghost"
             className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"

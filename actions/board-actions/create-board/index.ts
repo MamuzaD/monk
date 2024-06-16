@@ -42,9 +42,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     });
 
   } catch (error) {
-    console.log({
-      error
-    });
+   
     return { error: "Database error when creating" };
   }
 

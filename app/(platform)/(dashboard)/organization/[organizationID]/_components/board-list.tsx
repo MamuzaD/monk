@@ -30,7 +30,6 @@ export const BoardList = async () => {
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {boards.map((board) => (
-          <BoardContextMenu>
             <Link
               key={board.id}
               href={`/board/${board.id}`}
@@ -42,7 +41,6 @@ export const BoardList = async () => {
                 {board.title}
               </p>
             </Link>
-          </BoardContextMenu>
         ))}
 
         <FormPopover side="right" sideOffset={10}>

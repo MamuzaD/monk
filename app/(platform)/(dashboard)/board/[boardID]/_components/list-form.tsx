@@ -70,7 +70,7 @@ export const ListForm = () => {
             className="py-2 h-5 font-medium border-transparent hover:border-input focus:border-input transition focus-visible:ring-0 border-0"
             placeholder="Enter list title..."
           />
-          <input hidden value={params.boardId} name="boardId" />
+          <input hidden defaultValue={params.boardId} name="boardId" />
           <div className="flex items-center gap-x-1">
             <FormSubmit className="pt-19">Add List</FormSubmit>
             <Button onClick={disableEditing} size="sm" variant="ghost">

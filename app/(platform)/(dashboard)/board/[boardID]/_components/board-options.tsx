@@ -38,6 +38,7 @@ export const BoardOptions = ({ id }: BoardOptionsProps) => {
     <Popover>
       <PopoverTrigger asChild>
         <Button
+          aria-labelledby="board options"
           className="h-auto w-auto p-2 rounded-full"
           variant="transparent"
         >

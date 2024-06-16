@@ -75,10 +75,10 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
               type="radio"
               id={id}
               name={id}
-              className="hidden"
               checked={selectedImageId === image.id}
               disabled={pending}
-              value={`${image.id}|${image.urls.thumb}|${image.urls.full}|${image.links.html}|${image.user.name}`}
+              defaultValue={`${image.id}|${image.urls.thumb}|${image.urls.full}|${image.links.html}|${image.user.name}`}
+              hidden
             />
             <Image
               fill

@@ -2,7 +2,7 @@
 
 import { useState, useRef, ElementRef } from "react";
 import { toast } from "sonner";
-import { useEventListener, useOnClickOutside } from "usehooks-ts";
+import { useEventListener } from "usehooks-ts";
 import { List } from "@prisma/client";
 import { renameList } from "@/actions/rename-list";
 import { useAction } from "@/hooks/use-action";
@@ -48,8 +48,6 @@ export const ListHeader = ({ list, onAddCard }: ListHeaderProps) => {
     const id = formData.get("id") as string;
     const boardId = formData.get("boardId") as string;
 
-    console.log(boardId);
-
     if (title === list.title) return disableEditing();
 
     execute({ title, id, boardId });
@@ -67,17 +65,24 @@ export const ListHeader = ({ list, onAddCard }: ListHeaderProps) => {
 
   useEventListener("keydown", onKeyDown);
 
+  
   return (
     <div className="pt-2 px-2 text-sm font-semibold flex justify-between items-start gap-x-2">
       {isEditing ? (
         <form ref={formRef} action={onSubmit} className="flex-1 px-[2px]">
-          <input hidden id="id" name="id" value={list.id} />
-          <input hidden id="boardId" name="boardId" value={list.boardId} />
+          <input hidden id="id" name="id" defaultValue={list.id} />
+          <input
+            hidden
+            id="boardId"
+            name="boardId"
+            defaultValue={list.boardId}
+          />
           <FormInput
             className="text-sm px-[7px] py-1 h-7 border-transparent hover:border-input focus:border-input transition truncate font-medium bg-transparent focus:bg-white"
             ref={inputRef}
             onBlur={onBlur}
             id="title"
+            type="text"
             placeholder="Change list title..."
             defaultValue={title}
             errors={fieldErrors}
@@ -92,7 +97,7 @@ export const ListHeader = ({ list, onAddCard }: ListHeaderProps) => {
           {title}
         </div>
       )}
-      <ListOptions list={list} onAddCard={() => {}} />
+      <ListOptions list={list} onAddCard={() => {}} rename={enableEditing} />
     </div>
   );
 };
