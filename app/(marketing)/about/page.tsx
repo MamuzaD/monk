@@ -1,7 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 
-const AboutPage = () => {
+export default function AboutPage(){
   return (
     <div className="flex flex-col items-center justify-center text-center">
       <h1 className="font-bold text-3xl md:text-6xl">About Min Kanban</h1>
@@ -45,4 +45,3 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;

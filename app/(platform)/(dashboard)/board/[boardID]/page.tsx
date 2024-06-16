@@ -9,7 +9,7 @@ interface BoardIdProps {
   };
 }
 
-const BoardIdPage = async ({ params }: BoardIdProps) => {
+export default async function BoardIdPage({ params }: BoardIdProps) {
   const { orgId } = auth();
 
   if (!orgId) redirect("/select-org");
@@ -30,7 +30,7 @@ const BoardIdPage = async ({ params }: BoardIdProps) => {
     },
     orderBy: {
       order: "asc",
-    }
+    },
   });
 
   return (
@@ -38,6 +38,4 @@ const BoardIdPage = async ({ params }: BoardIdProps) => {
       <ListContainer boardId={params.boardId} data={lists} />
     </div>
   );
-};
-
-export default BoardIdPage;
+}

@@ -60,6 +60,14 @@ export const BoardOptions = ({ id }: BoardOptionsProps) => {
         <Button
           variant="ghost"
           disabled={isLoading}
+          onClick={}
+          className="rounded-non w-full h-auto p-2 px-5 justify-start font-normal"
+        >
+          Rename Board
+        </Button>
+        <Button
+          variant="ghost"
+          disabled={isLoading}
           onClick={onDelete}
           className="rounded-non w-full h-auto p-2 px-5 justify-start font-normal"
         >

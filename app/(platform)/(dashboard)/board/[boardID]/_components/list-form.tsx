@@ -7,7 +7,7 @@ import { useEventListener, useOnClickOutside } from "usehooks-ts";
 import { Plus, X } from "lucide-react";
 
 import { useAction } from "@/hooks/use-action";
-import { createList } from "@/actions/create-list";
+import { createList } from "@/actions/list-actions/create-list";
 import { FormInput } from "@/components/form/form-input";
 import { FormSubmit } from "@/components/form/form-submit";
 import { Button } from "@/components/ui/button";
@@ -84,6 +84,7 @@ export const ListForm = () => {
   return (
     <ListWrapper>
       <button
+        type="button"
         onClick={enableEditing}
         className="w-full rounded-md bg-white/80 hover:bg-white/50 transition p-3 flex items-center font-medium text-sm"
       >

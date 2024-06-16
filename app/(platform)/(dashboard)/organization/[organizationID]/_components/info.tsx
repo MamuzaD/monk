@@ -10,9 +10,7 @@ interface InfoProps {}
 export const Info = () => {
   const { organization, isLoaded } = useOrganization();
 
-  if (!isLoaded) {
-    return <Info.Skeleton />;
-  }
+  if (!isLoaded) return <Info.Skeleton />;
 
   return (
     <div className="flex items-center gap-x-4">
@@ -38,13 +36,13 @@ Info.Skeleton = function SkeletonInfo() {
   return (
     <div className="flex items-center gap-x-4">
       <div className="w-[60px] h-[60px] relative">
-        <Skeleton className="w-full h-full" />
+        <Skeleton className="w-full h-full text-neutral-900" />
       </div>
       <div className="space-y-2">
         <Skeleton className="h-10 w-[200px]" />
         <div className="flex items-center">
           <Skeleton className="h-4 w-4 mr-1" />
-          <Skeleton className="h-4 w-[100px] "/>
+          <Skeleton className="h-4 w-[100px] " />
         </div>
       </div>
     </div>

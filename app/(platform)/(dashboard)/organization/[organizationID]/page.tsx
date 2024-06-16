@@ -8,11 +8,11 @@ export async function generateMetadata() {
   const { orgSlug } = auth();
 
   return {
-    title: orgSlug
-  }
+    title: orgSlug,
+  };
 }
 
-const OrganizationIDPage = async () => {
+export default function OrganizationIDPage() {
   return (
     <div className="w-full mb-20 ">
       <Info />
@@ -24,6 +24,4 @@ const OrganizationIDPage = async () => {
       </div>
     </div>
   );
-};
-
-export default OrganizationIDPage;
+}

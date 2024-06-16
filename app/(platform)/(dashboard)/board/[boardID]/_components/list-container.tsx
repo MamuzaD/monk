@@ -7,8 +7,8 @@ import { ListWCard } from "@/types";
 import { ListForm } from "./list-form";
 import { ListItem } from "./list-item";
 import { toast } from "sonner";
-import { reorderList } from "@/actions/reorder-list";
-import { reorderCards } from "@/actions/reorder-cards";
+import { reorderList } from "@/actions/list-actions/reorder-list";
+import { reorderCards } from "@/actions/card-actions/reorder-cards";
 
 interface ListContainerProps {
   data: ListWCard[];

@@ -9,7 +9,7 @@ const textFont = PT_Sans({
   weight: ["400", "700"],
 });
 
-const MarketingPage = () => {
+export default function MarketingPage() {
   return (
     <div className="pt-24 flex items-center justify-center flex-col">
       <div className="flex items-center justify-center flex-col">
@@ -39,4 +39,3 @@ const MarketingPage = () => {
   );
 };
 
-export default MarketingPage;

@@ -1,11 +1,22 @@
-import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
+"use client";
+
+import {
+  OrganizationSwitcher,
+  UserButton,
+  useOrganization,
+} from "@clerk/nextjs";
 import { Plus } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { FormPopover } from "@/components/form/form-popover";
 import { MobileSidebar } from "./mobile-sidebar";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export const Navbar = () => {
+  const { isLoaded } = useOrganization();
+
+  if (!isLoaded) return <Navbar.Skeleton />;
+
   return (
     <nav className="fixed z-50 top-0 px-4 w-full h-14 border-b shadow-sm bg-white flex items-center">
       <MobileSidebar />
@@ -51,6 +62,27 @@ export const Navbar = () => {
             </span>
           </Button>
         </FormPopover>
+      </div>
+    </nav>
+  );
+};
+
+Navbar.Skeleton = function SkeletonNavbar() {
+  return (
+    <nav className="fixed z-50 top-0 px-4 w-full h-14 border-b shadow-sm bg-white flex items-center">
+      <MobileSidebar />
+      <div className="flex items-center gap-x-4">
+        <div className="hidden md:flex">
+          <Logo />
+        </div>
+      </div>
+      <div className="ml-auto flex items-center gap-x-5">
+        <Skeleton className="h-8 w-20" />
+        <Skeleton className="h-8 w-8 rounded-full" />
+        <Skeleton className="rounded-full block p-2 h-auto w-auto mr-4">
+          <Skeleton className="hidden md:block px-2 h-4 w-16" />
+          <Skeleton className="block md:hidden h-4 w-4" />
+        </Skeleton>
       </div>
     </nav>
   );

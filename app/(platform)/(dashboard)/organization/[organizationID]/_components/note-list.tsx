@@ -1,4 +1,4 @@
-import { HelpCircle, LayoutDashboard } from "lucide-react";
+import { HelpCircle, Notebook } from "lucide-react";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
@@ -7,12 +7,12 @@ import { Hint } from "@/components/hint";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export const BoardList = async () => {
+export const NoteList = async () => {
   const { orgId } = auth();
 
   if (!orgId) return redirect("/select-org");
 
-  const boards = await db.board.findMany({
+  const notes = await db.board.findMany({
     where: {
       orgId,
     },
@@ -24,20 +24,20 @@ export const BoardList = async () => {
   return (
     <div className="space-y-4">
       <div className="flex items-center font-semibold text-lg text-neutral-700">
-        <LayoutDashboard className="h-6 w-6 mr-2" />
-        Your Boards
+        <Notebook className="h-6 w-6 mr-2" />
+        Your Notes
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-        {boards.map((board) => (
+        {notes.map((note) => (
             <Link
-              key={board.id}
-              href={`/board/${board.id}`}
-              style={{ backgroundImage: `url(${board.imageThumbUrl})` }}
+              key={note.id}
+              href={`/note/${note.id}`}
+              style={{ backgroundImage: `url(${note.imageThumbUrl})` }}
               className="group relative aspect-video bg-no-repeat bg-center bg-cover bg-neutral-400 rounded-sm h-full w-full p-2 overflow-hidden"
             >
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/60 transition" />
               <p className="relative font-light text-white top-3/4">
-                {board.title}
+                {note.title}
               </p>
             </Link>
         ))}
@@ -47,7 +47,7 @@ export const BoardList = async () => {
             role="button"
             className="aspect-video relative h-full w-full bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-60 transition"
           >
-            <p className="text-sm">Create New Board</p>
+            <p className="text-sm">Create New Note</p>
             <span className="text-sm">5 remaining</span>
             <Hint
               sideOffset={40}
@@ -62,7 +62,7 @@ export const BoardList = async () => {
   );
 };
 
-BoardList.Skeleton = function SkeletonBoardList() {
+NoteList.Skeleton = function SkeletonNoteList() {
   return (
     <div className="space-y-4">
       <div className="flex items-center">

@@ -2,8 +2,8 @@ import { useRef, ElementRef } from "react";
 import { List } from "@prisma/client";
 import { MoreHorizontal, TextCursorInput, X } from "lucide-react";
 import { useAction } from "@/hooks/use-action";
-import { deleteList } from "@/actions/delete-list";
-import { copyList } from "@/actions/copy-list";
+import { deleteList } from "@/actions/list-actions/delete-list";
+import { copyList } from "@/actions/list-actions/copy-list";
 import {
   Popover,
   PopoverClose,
@@ -12,9 +12,7 @@ import {
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { FormSubmit } from "@/components/form/form-submit";
-import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
-import { Input } from "@/components/ui/input";
 
 interface ListOptionsProps {
   list: List;
