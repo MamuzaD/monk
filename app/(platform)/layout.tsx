@@ -1,10 +1,7 @@
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "@/components/ui/sonner";
+import { PopupProvider } from "@/components/providers/popup-provider";
+import { QueryProvider } from "@/components/providers/query-provider";
 
 export default function PlatformLayout({
   children,
@@ -13,19 +10,11 @@ export default function PlatformLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body>
-          <header>
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </header>
-          <main>{children}</main>
-        </body>
-      </html>
+      <QueryProvider>
+        <Toaster />
+        <PopupProvider />
+        {children}
+      </QueryProvider>  
     </ClerkProvider>
   );
 }
