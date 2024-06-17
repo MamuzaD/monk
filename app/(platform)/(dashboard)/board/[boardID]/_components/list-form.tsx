@@ -52,8 +52,13 @@ export const ListForm = () => {
   const onSubmit = (formData: FormData) => {
     const title = formData.get("title") as string;
     const boardId = formData.get("boardId") as string;
+
+    console.log({
+      title, boardId
+    })
     execute({ title, boardId });
   };
+
 
   if (isEditing)
     return (
