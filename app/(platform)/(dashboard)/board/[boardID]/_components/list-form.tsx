@@ -77,8 +77,8 @@ export const ListForm = () => {
           />
           <input
             hidden
-            defaultValue={params.boardId}
-            value={params.boardId}
+            defaultValue={params.boardID}
+            value={params.boardID}
             name="boardId"
             id="boardId"
           />
