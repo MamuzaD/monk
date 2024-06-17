@@ -21,7 +21,7 @@ export default function MarketingPage() {
           minimal task management
         </div>
         <div className="text-3xl md:text-6xl text-center bg-gradient-to-r from-sky-800 to-cyan-500 text-white px-4 p-4 rounded-md w-full font-serif">
-          any name is fine here
+          to find name here...
         </div>
       </div>
       <div
@@ -34,8 +34,7 @@ export default function MarketingPage() {
       </div>
       <Button variant="secondary" className="mt-6" size="lg" asChild>
         <Link href="/sign-up">Continue ahead</Link>
-      </Button> 
+      </Button>
     </div>
   );
-};
-
+}
