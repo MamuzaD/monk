@@ -62,6 +62,7 @@ export const DeleteConfirm = ({
         <form action={onSubmit} className="space-y-4">
             <FormInput
               disabled={isLoading}
+              placeholder={title}
               id="title"
               label={`Enter "${title}" to confirm`}
               type="text"

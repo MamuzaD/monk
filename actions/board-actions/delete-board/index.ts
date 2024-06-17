@@ -31,11 +31,10 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
     if (!isPro) await decrementAvailableCount();
 
-    await createAuditLog({
-      entityId: board.id,
-      entityTitle: board.title,
-      entityType: ENTITY_TYPE.BOARD,
-      action: ACTION.DELETE,
+    await db.auditLog.deleteMany({
+      where: {
+        orgId,
+      },
     });
   } catch (error) {
     return { error: "Database error when deleting." };
