@@ -9,12 +9,14 @@ import { DeleteBoard } from "./schema";
 import { createAuditLog } from "@/lib/create-audit-log";
 import { ENTITY_TYPE, ACTION } from "@prisma/client";
 import { decrementAvailableCount } from "@/lib/org-limit";
+import { checkSubscription } from "@/lib/subscription";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
 
   if (!userId || !orgId) return { error: "unauthorized to delete" };
 
+  const isPro = await checkSubscription();
   const { id } = data;
   let board;
   try {
@@ -25,7 +27,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
 
-    await decrementAvailableCount();
+    if (!isPro) await decrementAvailableCount();
 
     await createAuditLog({
       entityId: board.id,

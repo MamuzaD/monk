@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { useCardModal } from "@/hooks/use-card";
+import { useCardModal } from "@/hooks/use-card-modal";
 import { AuditLog } from "@prisma/client";
 import { CardWList } from "@/types";
 import { fetcher } from "@/lib/fetcher";

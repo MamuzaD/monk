@@ -9,7 +9,7 @@ import { Button } from "../ui/button";
 import { Copy, Trash } from "lucide-react";
 import { toast } from "sonner";
 import { useParams } from "next/navigation";
-import { useCardModal } from "@/hooks/use-card";
+import { useCardModal } from "@/hooks/use-card-modal";
 
 interface ActionProps {
   card: CardWList;

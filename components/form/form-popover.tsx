@@ -11,6 +11,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useAction } from "@/hooks/use-action";
+import { useStripeModal } from "@/hooks/use-stripe-modal";
 import { createBoard } from "@/actions/board-actions/create-board";
 
 import { Button } from "../ui/button";
@@ -32,6 +33,7 @@ export const FormPopover = ({
   sideOffset = 0,
   align,
 }: FormPopoverProps) => {
+  const stripeModal = useStripeModal();
   const router = useRouter();
   const closeRef = useRef<ElementRef<"button">>(null);
 
@@ -43,6 +45,7 @@ export const FormPopover = ({
     },
     onError: (error) => {
       toast.error(error);
+      stripeModal.onOpen();
     },
   });
 

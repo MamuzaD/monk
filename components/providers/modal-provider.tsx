@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { CardModal } from "../card-modal";
+import { StripeModal } from "../stripe-modal";
 
 export const PopupProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -10,11 +11,12 @@ export const PopupProvider = () => {
     setIsMounted(true);
   }, []);
 
-  if(!isMounted) return null;
+  if (!isMounted) return null;
 
   return (
     <>
-    <CardModal />
+      <CardModal />
+      <StripeModal />
     </>
-  )
-}
+  );
+};

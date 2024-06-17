@@ -98,7 +98,7 @@ model OrgLimit {
   updatedAt DateTime @updatedAt
 }
 
-model OrgSubscriptions {
+model OrgSubscription {
   id    String @id @default(uuid())
   orgId String @unique
 

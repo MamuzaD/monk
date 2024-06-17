@@ -9,6 +9,7 @@ import { CreateBoard } from "./schema";
 import { createAuditLog } from "@/lib/create-audit-log";
 import { ENTITY_TYPE, ACTION } from "@prisma/client";
 import { incrementAvailableCount, hasAvailableCount } from "@/lib/org-limit";
+import { checkSubscription } from "@/lib/subscription";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
@@ -16,7 +17,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   if (!userId || !orgId) return { error: "unauthorized to create" };
 
   const canCreate = await hasAvailableCount();
-  if (!canCreate) return { error: "Reached max board limit" };
+  const isPro = await checkSubscription();
+  if (!canCreate && !isPro) return { error: "Reached max board limit" };
   const { title, image } = data;
 
   const [imageId, imageThumbUrl, imageFullUrl, imageLinkHTML, imageUsername] =
@@ -46,7 +48,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
 
-    await incrementAvailableCount();
+    if (!isPro) await incrementAvailableCount();
 
     await createAuditLog({
       entityId: board.id,
