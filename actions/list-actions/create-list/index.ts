@@ -18,7 +18,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   let list;
 
   try {
-    console.error("hello");
     const board = await db.board.findUnique({
       where: {
         id: boardId,

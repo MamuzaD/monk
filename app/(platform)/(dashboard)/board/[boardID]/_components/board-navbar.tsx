@@ -1,6 +1,6 @@
 import { Board } from "@prisma/client";
 import { BoardHeader } from "./board-header";
-import { BoardOptions } from "./board-options";
+import { BoardOptions } from "@/components/board/board-options";
 
 interface BoardNavbarProps {
   board: Board;

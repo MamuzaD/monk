@@ -9,7 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { MAX_FREE_BOARDS } from "@/constants/boards";
 import { getAvailableCount } from "@/lib/org-limit";
 import { checkSubscription } from "@/lib/subscription";
-// import { BoardOptions } from "@/app/(platform)/(dashboard)/board/[boardId]/_components/board-options";
+import { BoardOptions } from "@/components/board/board-options";
 
 export const BoardList = async () => {
   const { orgId } = auth();
