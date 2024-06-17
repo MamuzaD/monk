@@ -41,7 +41,7 @@ export const BoardList = async () => {
             key={board.id}
           >
             <div className="absolute top-2 right-2 z-10">
-              {/* <BoardOptions board={board} /> */}
+               <BoardOptions board={board} /> 
             </div>
             <Link
               href={`/board/${board.id}`}
