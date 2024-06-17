@@ -6,8 +6,7 @@ import { db } from "@/lib/db";
 import { createSafeAction } from "@/lib/create-safe-action";
 import { InputType, ReturnType } from "./types";
 import { DeleteList } from "./schema";
-import { createAuditLog } from "@/lib/create-audit-log";
-import { ENTITY_TYPE, ACTION } from "@prisma/client";
+
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
@@ -27,12 +26,16 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
 
-    await createAuditLog({
-      entityId: list.id,
-      entityTitle: list.title,
-      entityType: ENTITY_TYPE.LIST,
-      action: ACTION.DELETE,
+   
+
+    await db.auditLog.deleteMany({
+      where: {
+        entityId: list.id,
+        orgId,
+      },
     });
+
+    
   } catch (error) {
     return { error: "Database error when deleting." };
   }
