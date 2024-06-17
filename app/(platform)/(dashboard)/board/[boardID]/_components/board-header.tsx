@@ -4,13 +4,13 @@ import { Board } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { FormInput } from "@/components/form/form-input";
 import { Hint } from "@/components/hint";
-import { useBoardRename } from "@/hooks/use-renameboard";
+import { useRenameBoard } from "@/hooks/use-renameboard";
 
 interface BoardHeaderProps {
   board: Board;
 }
 
-export const BoardRename = ({ board }: BoardHeaderProps) => {
+export const BoardHeader = ({ board }: BoardHeaderProps) => {
   const {
     title,
     isEditing,
@@ -19,7 +19,7 @@ export const BoardRename = ({ board }: BoardHeaderProps) => {
     enableEditing,
     onSubmit,
     onBlur,
-  } = useBoardRename({ board });
+  } = useRenameBoard({ board });
   
   if (isEditing)
     return (

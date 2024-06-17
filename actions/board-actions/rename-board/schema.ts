@@ -7,7 +7,7 @@ export const RenameBoard = z.object({
       invalid_type_error: "Title required",
     })
     .min(3, {
-      message: "Title must be >3 characters",
+      message: "Title too short",
     }),
   id: z.string(),
 });

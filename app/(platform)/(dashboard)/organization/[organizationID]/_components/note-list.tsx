@@ -2,7 +2,6 @@ import { HelpCircle, Notebook } from "lucide-react";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
-import { FormPopover } from "@/components/form/form-popover";
 import { Hint } from "@/components/hint";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -33,10 +32,10 @@ export const NoteList = async () => {
             <Link
               key={note.id}
               href={`/note/${note.id}`}
-              className="group relative aspect-video bg-no-repeat bg-center bg-cover bg-neutral-400 rounded-sm h-full w-full p-2 overflow-hidden"
+              className="group relative aspect-[4/6] bg-no-repeat bg-center bg-cover bg-muted rounded-sm p-2 overflow-hidden shadow-md"
             >
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/60 transition" />
-              <p className="relative font-light text-white top-3/4">
+              <div className="absolute inset-0 group-hover:bg-neutral-200 transition" />
+              <p className="relative font-bold text-neutral-800 top-1">
                 {note.title}
               </p>
             </Link>

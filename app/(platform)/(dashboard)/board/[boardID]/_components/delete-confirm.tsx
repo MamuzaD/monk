@@ -30,7 +30,7 @@ export const DeleteConfirm = ({
   sideOffset = 0,
   align,
 }: DeleteConfirmProps) => {
-  const { onDelete, isLoading: isLoadingDelete } = useDeleteBoard();
+  const { onDelete, isLoading } = useDeleteBoard();
 
   const onSubmit = (formData: FormData) => {
     const input = formData.get("title") as string;
@@ -61,7 +61,7 @@ export const DeleteConfirm = ({
         </PopoverClose>
         <form action={onSubmit} className="space-y-4">
             <FormInput
-              disabled={isLoadingDelete}
+              disabled={isLoading}
               id="title"
               label={`Enter "${title}" to confirm`}
               type="text"

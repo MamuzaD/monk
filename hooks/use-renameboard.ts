@@ -1,17 +1,18 @@
 import { Board } from "@prisma/client";
-import { useRef, useState } from "react";
+import { ElementRef, useRef, useState } from "react";
 import { renameBoard } from "@/actions/board-actions/rename-board";
 import { useAction } from "@/hooks/use-action";
 import { toast } from "sonner";
 
-interface UseBoardRenameProps {
+interface UseRenameBoardProps {
   board: Board;
 }
 
-export const useBoardRename = ({ board }: UseBoardRenameProps) => {
-  const { execute, isLoading } = useAction(renameBoard, {
+export const useRenameBoard = ({ board }: UseRenameBoardProps) => {
+  const { execute, isLoading, fieldErrors } = useAction(renameBoard, {
     onSuccess: (board: Board) => {
-      toast.success(`${title} renamed to ${board.title}.`);
+      toast.success(`Board "${title}" renamed to "${board.title}"`);
+      closeRef?.current?.click();
       setTitle(board.title);
       disableEditing();
     },
@@ -22,6 +23,7 @@ export const useBoardRename = ({ board }: UseBoardRenameProps) => {
 
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const closeRef = useRef<ElementRef<"button">>(null); //for popover
 
   const [title, setTitle] = useState(board.title);
   const [isEditing, setIsEditing] = useState(false);
@@ -55,6 +57,8 @@ export const useBoardRename = ({ board }: UseBoardRenameProps) => {
     isLoading,
     formRef,
     inputRef,
+    closeRef,
+    fieldErrors,
     enableEditing,
     disableEditing,
     onSubmit,
