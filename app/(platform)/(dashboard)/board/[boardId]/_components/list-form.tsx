@@ -53,9 +53,6 @@ export const ListForm = () => {
     const title = formData.get("title") as string;
     const boardId = formData.get("boardId") as string;
 
-    console.log({
-      title, boardId, params
-    })
     execute({ title, boardId });
   };
 
@@ -77,10 +74,8 @@ export const ListForm = () => {
           />
           <input
             hidden
-            defaultValue={params.boardID}
-            value={params.boardID}
+            defaultValue={params.boardId}
             name="boardId"
-            id="boardId"
           />
           <div className="flex items-center gap-x-1">
             <FormSubmit className="pt-19">Add List</FormSubmit>
