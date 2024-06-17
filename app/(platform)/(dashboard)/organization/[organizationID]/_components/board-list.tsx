@@ -9,7 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { MAX_FREE_BOARDS } from "@/constants/boards";
 import { getAvailableCount } from "@/lib/org-limit";
 import { checkSubscription } from "@/lib/subscription";
-import { BoardOptions } from "@/app/(platform)/(dashboard)/board/[boardId]/_components/board-options";
+// import { BoardOptions } from "@/app/(platform)/(dashboard)/board/[boardId]/_components/board-options";
 
 export const BoardList = async () => {
   const { orgId } = auth();
@@ -41,7 +41,7 @@ export const BoardList = async () => {
             key={board.id}
           >
             <div className="absolute top-2 right-2 z-10">
-              <BoardOptions board={board} />
+              {/* <BoardOptions board={board} /> */}
             </div>
             <Link
               href={`/board/${board.id}`}
