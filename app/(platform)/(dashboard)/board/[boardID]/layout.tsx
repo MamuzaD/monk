@@ -2,7 +2,7 @@ import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { notFound, redirect } from "next/navigation";
 import { BoardNavbar } from "./_components/board-navbar";
-import { NoteSidebar } from "./_components/note-sidebar";
+import { NoteSidebar } from "./_components/note-sidebar"; 
 
 export async function generateMetadata({
   params,

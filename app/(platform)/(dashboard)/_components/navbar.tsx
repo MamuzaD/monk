@@ -8,7 +8,7 @@ import {
 import { Plus } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
-import { FormPopover } from "@/components/form/form-popover";
+import { BoardPopover } from "@/components/form/board-popover";
 import { MobileSidebar } from "./mobile-sidebar";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -51,7 +51,7 @@ export const Navbar = () => {
             },
           }}
         />
-        <FormPopover align="start" side="bottom" sideOffset={16}>
+        <BoardPopover align="start" side="bottom" sideOffset={16}>
           <Button
             size={"sm"}
             className="rounded-full block p-2 h-auto w-auto mr-4 hover:opacity-80 md:rounded-xl"
@@ -61,7 +61,7 @@ export const Navbar = () => {
               <Plus className="h-4 w-4" />
             </span>
           </Button>
-        </FormPopover>
+        </BoardPopover>
       </div>
     </nav>
   );

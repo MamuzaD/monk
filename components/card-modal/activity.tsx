@@ -10,7 +10,6 @@ interface ActivityProps {
 }
 
 export const Activity = ({ auditLogs }: ActivityProps) => {
-  console.log("test", auditLogs);
 
   return (
     <div className="flex items-start gap-x-3 w-full">

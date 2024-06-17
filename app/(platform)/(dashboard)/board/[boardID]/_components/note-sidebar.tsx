@@ -30,7 +30,7 @@ export const NoteSidebar = () => {
     <>
       <Button
         onClick={onOpen}
-        className="absolute rounded-full right-2 mt-8 bg-white/70 h-auto w-auto p-3"
+        className="absolute rounded-full right-2 mt-4 bg-white/70 h-auto w-auto p-3"
         variant="ghost"
         size="sm"
       >

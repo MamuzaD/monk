@@ -10,29 +10,18 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import { useDeleteBoard } from "@/hooks/use-deleteboard";
+import { useBoardRename } from "@/hooks/use-renameboard";
+import { Board } from "@prisma/client";
+import { DeleteBoard } from "./delete-board";
 
 interface BoardOptionsProps {
-  id: string;
+  board: Board;
+  className?: string;
 }
 
-export const BoardOptions = ({ id }: BoardOptionsProps) => {
-  const router = useRouter();
-
-  const { execute, isLoading } = useAction(deleteBoard, {
-    onSuccess: (board) => {
-      toast.success(`Board "${board.title}" deleted`);
-      router.push(`/organization/${board.orgId}`);
-    },
-    onError: (error) => {
-      toast.error(error);
-    },
-  });
-
-  const onDelete = () => {
-    execute({ id });
-  };
+export const BoardOptions = ({ board, className }: BoardOptionsProps) => {
+  const { enableEditing, isLoading: isLoadingRename } = useBoardRename({ board });
 
   return (
     <Popover>
@@ -59,12 +48,13 @@ export const BoardOptions = ({ id }: BoardOptionsProps) => {
         </PopoverClose>
         <Button
           variant="ghost"
-          disabled={isLoading}
-          onClick={onDelete}
+          disabled={isLoadingRename}
+          //onClick={}
           className="rounded-non w-full h-auto p-2 px-5 justify-start font-normal"
         >
-          Delete Board
+          Rename Board
         </Button>
+        <DeleteBoard title={board.title} id={board.id}/>
       </PopoverContent>
     </Popover>
   );

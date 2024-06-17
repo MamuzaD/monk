@@ -17,7 +17,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   if (!userId || !orgId) return { error: "unauthorized to delete" };
 
   const isPro = await checkSubscription();
-  const { id } = data;
+  const { id, title, input } = data;
+  if (title !== input) return { error: "Input is not board title" };
+
   let board;
   try {
     board = await db.board.delete({

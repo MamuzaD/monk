@@ -64,7 +64,6 @@ export const Description = ({ card }: DescriptionProps) => {
     const description = formData.get("description") as string;
     const boardId = params.boardId as string;
 
-    console.log(description, boardId);
     execute({ boardId, description, id: card.id });
   };
 

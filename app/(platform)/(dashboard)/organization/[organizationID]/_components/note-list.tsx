@@ -6,18 +6,19 @@ import { FormPopover } from "@/components/form/form-popover";
 import { Hint } from "@/components/hint";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
+import { NotePopover } from "@/components/note-form/note-popover";
 
 export const NoteList = async () => {
   const { orgId } = auth();
 
   if (!orgId) return redirect("/select-org");
 
-  const notes = await db.board.findMany({
+  const notes = await db.note.findMany({
     where: {
       orgId,
     },
     orderBy: {
-      createdAt: "desc",
+      updatedAt: "desc",
     },
   });
 
@@ -32,7 +33,6 @@ export const NoteList = async () => {
             <Link
               key={note.id}
               href={`/note/${note.id}`}
-              style={{ backgroundImage: `url(${note.imageThumbUrl})` }}
               className="group relative aspect-video bg-no-repeat bg-center bg-cover bg-neutral-400 rounded-sm h-full w-full p-2 overflow-hidden"
             >
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/60 transition" />
@@ -42,7 +42,7 @@ export const NoteList = async () => {
             </Link>
         ))}
 
-        <FormPopover side="right" sideOffset={10}>
+        <NotePopover side="right" sideOffset={10}>
           <div
             role="button"
             className="aspect-video relative h-full w-full bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-60 transition"
@@ -56,7 +56,7 @@ export const NoteList = async () => {
               <HelpCircle className="absolute bottom-2 right-2 h-[14px] w-[14px]" />
             </Hint>
           </div>
-        </FormPopover>
+        </NotePopover>
       </div>
     </div>
   );

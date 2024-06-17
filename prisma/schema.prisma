@@ -55,6 +55,7 @@ model Card {
 
 model Note {
   id        String   @id @default(uuid())
+  orgId     String
   title     String
   content   Json
   createdAt DateTime @default(now())
@@ -70,6 +71,7 @@ enum ACTION {
 
 enum ENTITY_TYPE {
   BOARD
+  NOTE
   LIST
   CARD
 }
@@ -90,6 +92,15 @@ model AuditLog {
 }
 
 model OrgLimit {
+  id    String @id @default(uuid())
+  orgId String @unique
+  count Int    @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model NoteLimit {
   id    String @id @default(uuid())
   orgId String @unique
   count Int    @default(0)

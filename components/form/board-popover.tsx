@@ -20,19 +20,19 @@ import { FormInput } from "./form-input";
 import { FormSubmit } from "./form-submit";
 import { FormPicker } from "./form-picker";
 
-interface FormPopoverProps {
+interface BoardPopoverProps {
   children: React.ReactNode;
   side?: "top" | "right" | "bottom" | "left";
   sideOffset?: number;
   align?: "start" | "center" | "end";
 }
 
-export const FormPopover = ({
+export const BoardPopover = ({
   children,
   side = "bottom",
   sideOffset = 0,
   align,
-}: FormPopoverProps) => {
+}: BoardPopoverProps) => {
   const stripeModal = useStripeModal();
   const router = useRouter();
   const closeRef = useRef<ElementRef<"button">>(null);
@@ -52,7 +52,7 @@ export const FormPopover = ({
   const onSubmit = (formData: FormData) => {
     const title = formData.get("title") as string;
     const image = formData.get("image") as string;
-
+    
     execute({ title, image });
   };
 
