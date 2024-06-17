@@ -54,7 +54,7 @@ export const ListForm = () => {
     const boardId = formData.get("boardId") as string;
 
     console.log({
-      title, boardId
+      title, boardId, params
     })
     execute({ title, boardId });
   };
