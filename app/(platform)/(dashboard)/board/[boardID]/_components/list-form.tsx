@@ -13,9 +13,12 @@ import { FormSubmit } from "@/components/form/form-submit";
 import { Button } from "@/components/ui/button";
 import { ListWrapper } from "./list-wrapper";
 
-export const ListForm = () => {
+interface ListFormProps {
+  id: string;
+}
+
+export const ListForm = ({id}: ListFormProps) => {
   const router = useRouter();
-  const params = useParams();
   const [isEditing, setIsEditing] = useState(false);
   const formRef = useRef<ElementRef<"form">>(null);
   const inputRef = useRef<ElementRef<"input">>(null);
@@ -51,7 +54,7 @@ export const ListForm = () => {
 
   const onSubmit = (formData: FormData) => {
     const title = formData.get("title") as string;
-    const boardId = formData.get("boardId") as string;
+    const boardId = id as string;
 
     console.log({
       title, boardId
@@ -75,7 +78,6 @@ export const ListForm = () => {
             className="py-2 h-5 font-medium border-transparent hover:border-input focus:border-input transition focus-visible:ring-0 border-0"
             placeholder="Enter list title..."
           />
-          <input hidden defaultValue={params.boardId} name="boardId" />
           <div className="flex items-center gap-x-1">
             <FormSubmit className="pt-19">Add List</FormSubmit>
             <Button onClick={disableEditing} size="sm" variant="ghost">

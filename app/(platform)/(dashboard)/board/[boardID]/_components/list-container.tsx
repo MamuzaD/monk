@@ -135,7 +135,7 @@ export const ListContainer = ({ data, boardId }: ListContainerProps) => {
               return <ListItem key={list.id} index={index} list={list} />;
             })}
             {provided.placeholder}
-            <ListForm />
+            <ListForm id={boardId}/>
             {/* <div className="flex-shrink-0 w-1" /> */}
           </ol>
         )}
