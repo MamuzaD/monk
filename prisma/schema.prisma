@@ -24,7 +24,7 @@ model Board {
   imageUsername String   @db.Text
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
-  Lists         List[]
+  lists         List[]
 }
 
 model List {
@@ -33,7 +33,7 @@ model List {
   order     Int
   boardId   String
   board     Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
-  Cards     Card[]
+  cards     Card[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -88,7 +88,7 @@ model AuditLog {
   userName    String      @db.Text
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt 
 }
 
 model OrgLimit {

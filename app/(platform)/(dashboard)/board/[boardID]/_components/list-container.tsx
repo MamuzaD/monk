@@ -83,13 +83,13 @@ export const ListContainer = ({ data, boardId }: ListContainerProps) => {
 
       if (!sourceList || !destinationList) return;
 
-      if (!sourceList.Cards) sourceList.Cards = [];
-      if (!destinationList.Cards) destinationList.Cards = [];
+      if (!sourceList.cards) sourceList.cards = [];
+      if (!destinationList.cards) destinationList.cards = [];
 
       // moved in same list
       if (source.droppableId == destination.droppableId) {
         const newOrderCards = reorder(
-          sourceList.Cards,
+          sourceList.cards,
           source.index,
           destination.index
         );
@@ -98,26 +98,26 @@ export const ListContainer = ({ data, boardId }: ListContainerProps) => {
           card.order = index;
         });
 
-        sourceList.Cards = newOrderCards;
+        sourceList.cards = newOrderCards;
 
         setOrderData(newOrderData);
         executeReorderCards({ items: newOrderCards, boardId: boardId });
       } else {
-        const [movedCard] = sourceList.Cards.splice(source.index, 1);
+        const [movedCard] = sourceList.cards.splice(source.index, 1);
 
         movedCard.listId = destination.droppableId;
 
-        destinationList.Cards.splice(destination.index, 0, movedCard);
+        destinationList.cards.splice(destination.index, 0, movedCard);
 
-        sourceList.Cards.forEach((card, index) => {
+        sourceList.cards.forEach((card, index) => {
           card.order = index;
         });
-        destinationList.Cards.forEach((cards, index) => {
+        destinationList.cards.forEach((cards, index) => {
           cards.order = index;
         });
 
         setOrderData(newOrderData);
-        executeReorderCards({ items: destinationList.Cards, boardId: boardId });
+        executeReorderCards({ items: destinationList.cards, boardId: boardId });
       }
     }
   };

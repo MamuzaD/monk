@@ -49,11 +49,11 @@ export const ListItem = ({ index, list }: ListItemProps) => {
                 {...provided.droppableProps}
                   className={cn(
                     "mx-1 px-1 py-0.5 flex flex-col gap-y-2",
-                    list.Cards.length > 0 ? "mt-2" : "mt-0"
+                    list.cards.length > 0 ? "mt-2" : "mt-0"
                   )}
                 >
-                  {list.Cards.map((Card, index) => (
-                    <CardItem index={index} key={Card.id} card={Card} />
+                  {list.cards.map((card, index) => (
+                    <CardItem index={index} key={card.id} card={card} />
                   ))}
                   {provided.placeholder}
                 </ol>
