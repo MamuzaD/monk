@@ -5,32 +5,33 @@ import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import { createSafeAction } from "@/lib/create-safe-action";
 import { InputType, ReturnType } from "./types";
-import { CreateCard } from "./schema";
+import { CopyCard } from "./schema";
 import { createAuditLog } from "@/lib/create-audit-log";
 import { ACTION, ENTITY_TYPE } from "@prisma/client";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
 
-  if (!userId || !orgId) return { error: "unauthorized to rename" };
+  if (!userId || !orgId) return { error: "unauthorized to copy" };
 
-  const { title, boardId, listId } = data;
+  const { id, boardId } = data;
   let card;
-
   try {
-    const list = await db.list.findUnique({
+    const copyCard = await db.card.findUnique({
       where: {
-        id: listId,
-        board: {
-          orgId,
+        id,
+        list: {
+          board: {
+            orgId,
+          },
         },
       },
     });
 
-    if (!list) return { error: "List not found" };
+    if (!copyCard) return { error: "Card not found" };
 
     const lastCard = await db.card.findFirst({
-      where: { listId },
+      where: { listId: copyCard.listId },
       orderBy: { order: "desc" },
       select: { order: true },
     });
@@ -39,9 +40,10 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
     card = await db.card.create({
       data: {
-        title,
-        listId,
+        title: `${copyCard.title} - copy`,
         order: newOrder,
+        description: copyCard.description,
+        listId: copyCard.listId,
       },
     });
 
@@ -52,11 +54,11 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       action: ACTION.CREATE,
     });
   } catch (error) {
-    return { error: "Database error when creating card." };
+    return { error: "Database error when copying." };
   }
 
   revalidatePath(`/board/${boardId}`);
   return { data: card };
 };
 
-export const createCard = createSafeAction(CreateCard, handler);
+export const copyCard = createSafeAction(CopyCard, handler);

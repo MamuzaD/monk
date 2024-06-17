@@ -49,6 +49,9 @@ export const Description = ({ card }: DescriptionProps) => {
       queryClient.invalidateQueries({
         queryKey: ["card", card.id],
       });
+      queryClient.invalidateQueries({
+        queryKey: ["card-logs", card.id],
+      });
       toast.success(`Card "${card.title}" updated`);
       disableEditing();
     },
@@ -60,7 +63,6 @@ export const Description = ({ card }: DescriptionProps) => {
   const onSubmit = (formData: FormData) => {
     const description = formData.get("description") as string;
     const boardId = params.boardId as string;
-
 
     console.log(description, boardId);
     execute({ boardId, description, id: card.id });
