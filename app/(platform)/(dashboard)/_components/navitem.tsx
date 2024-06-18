@@ -14,10 +14,11 @@ import {
   NotebookPen,
   Settings,
 } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
+import { revalidatePath } from "next/cache";
 
 export type Organization = {
   id: string;
@@ -38,6 +39,7 @@ export const NavItem = ({
   organization,
   onExpand,
 }: NavItemProps) => {
+  const router = useRouter();
   const pathname = usePathname();
 
   const routes = [
@@ -68,6 +70,11 @@ export const NavItem = ({
     },
   ];
 
+  const onClick = (href: string) => {
+    router.push(href);
+    revalidatePath(href);
+  };
+
   return (
     <AccordionItem value={organization.id} className="border-none">
       <AccordionTrigger
@@ -91,8 +98,9 @@ export const NavItem = ({
       </AccordionTrigger>
       <AccordionContent className="pt-1 text-neutral-700">
         {routes.map((route) => (
-          <Link key={route.href} href={route.href}>
             <Button
+              key={route.href}
+              onClick={() => onClick(route.href)}
               size="sm"
               className={cn(
                 "w-full font-normal justify-start pl-10 mb-1",
@@ -103,7 +111,6 @@ export const NavItem = ({
               {route.icon}
               {route.label}
             </Button>
-          </Link>
         ))}
       </AccordionContent>
     </AccordionItem>
