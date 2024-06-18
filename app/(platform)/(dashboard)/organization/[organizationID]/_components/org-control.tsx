@@ -7,10 +7,12 @@ import { useOrganizationList } from "@clerk/nextjs";
 export const OrgControl = () => {
   const params = useParams();
   const { setActive } = useOrganizationList();
+      console.log("on");
 
   useEffect(() => {
     if (!setActive) return;
 
+          console.log("work");
     setActive({
       organization: params.organizationId as string,
     });
