@@ -72,7 +72,6 @@ export const NavItem = ({
 
   const onClick = (href: string) => {
     router.push(href);
-    revalidatePath(href);
   };
 
   return (
