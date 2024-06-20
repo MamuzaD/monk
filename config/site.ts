@@ -1,4 +1,4 @@
 export const siteConfig = {
-  name: "MinKanban",
-  description: "Simple kanban board",
+  name: "Monk",
+  description: "Minimal, organized, notes, and kanban",
 };

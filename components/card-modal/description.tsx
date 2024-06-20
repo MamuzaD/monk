@@ -69,9 +69,11 @@ export const Description = ({ card }: DescriptionProps) => {
 
   return (
     <div className="flex items-start gap-x-3 w-full">
-      <AlignLeft className="h-5 w-5 mt-0.5 text-neutral-700" />
+      <AlignLeft className="h-5 w-5 mt-0.5 text-neutral-700 dark:text-neutral-300" />
       <div className="w-full">
-        <p className="font-semibold text-neutral-700 mb-2">Description</p>
+        <p className="font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
+          Description
+        </p>
         {isEditing ? (
           <form action={onSubmit} ref={formRef} className="space-y-2">
             <FormTextarea
@@ -99,7 +101,7 @@ export const Description = ({ card }: DescriptionProps) => {
           <div
             onClick={enableEditing}
             role="button"
-            className="min-h-20 bg-neutral-200 text-sm font-medium py-3 px-3.5 rounded-md"
+            className="min-h-20 bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-500 text-sm font-medium py-3 px-3.5 rounded-md"
           >
             {card.description || "Add a description..."}
           </div>
@@ -112,10 +114,10 @@ export const Description = ({ card }: DescriptionProps) => {
 Description.Skeleton = function SkeletonDescription() {
   return (
     <div className="flex items-start gap-x-3 w-full">
-      <Skeleton className="h-6 w-6 bg-neutral-200" />
+      <Skeleton className="h-6 w-6 bg-neutral-200 dark:bg-neutral-800" />
       <div className="w-full">
-        <Skeleton className="h-6 w-24 mb-2 bg-neutral-200" />
-        <Skeleton className="h-20 w-full mb-2 bg-neutral-200" />{" "}
+        <Skeleton className="h-6 w-24 mb-2 bg-neutral-200 dark:bg-neutral-800" />
+        <Skeleton className="h-20 w-full mb-2 bg-neutral-200 dark:bg-neutral-800" />
         {/* h should be 78 px? */}
       </div>
     </div>

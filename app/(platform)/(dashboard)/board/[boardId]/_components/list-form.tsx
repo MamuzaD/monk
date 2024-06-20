@@ -63,7 +63,7 @@ export const ListForm = () => {
         <form
           action={onSubmit}
           ref={formRef}
-          className="w-full p-3 rounded-md bg-white shadow-md space-y-4"
+          className="w-full p-3 rounded-md bg-white dark:bg-neutral-950 shadow-md space-y-4"
         >
           <FormInput
             ref={inputRef}
@@ -78,7 +78,7 @@ export const ListForm = () => {
             name="boardId"
           />
           <div className="flex items-center gap-x-1">
-            <FormSubmit className="pt-19">Add List</FormSubmit>
+            <FormSubmit className="pt-19 dark:bg-neutral-900 dark:text-neutral-100">Add List</FormSubmit>
             <Button onClick={disableEditing} size="sm" variant="ghost">
               <X className="h-5 w-5" />
             </Button>
@@ -92,7 +92,7 @@ export const ListForm = () => {
       <button
         type="button"
         onClick={enableEditing}
-        className="w-full rounded-md bg-white/80 hover:bg-white/50 transition p-3 flex items-center font-medium text-sm"
+        className="w-full rounded-md bg-white/80 hover:bg-white/50 dark:bg-neutral-800/80 dark:hover:bg-neutral-800/50 transition p-3 flex items-center font-medium text-sm"
       >
         <Plus className="h-4 w-4 mr-2" />
         add a list

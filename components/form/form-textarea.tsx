@@ -60,7 +60,7 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
             required={required}
             disabled={pending || disabled}
             className={cn(
-              "resize-none focus-visible:ring-0 focus-visible:ring-offset-0 focus:ring-0 outline-none shadow-sm",
+              "resize-none focus-visible:ring-0 focus-visible:ring-offset-0 focus:ring-0 outline-none shadow-sm dark:bg-neutral-800",
               className
             )}
             onBlur={onBlur}
