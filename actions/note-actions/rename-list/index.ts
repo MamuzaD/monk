@@ -5,7 +5,7 @@ import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import { createSafeAction } from "@/lib/create-safe-action";
 import { InputType, ReturnType } from "./types";
-import { RenameList } from "./schema";
+import { RenameNote } from "./schema";
 import { createAuditLog } from "@/lib/create-audit-log";
 import { ENTITY_TYPE, ACTION } from "@prisma/client";
 
@@ -14,17 +14,14 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
   if (!userId || !orgId) return { error: "unauthorized to rename" };
 
-  const { title, id, boardId } = data;
-  let list;
+  const { title, id } = data;
+  let note;
 
   try {
-    list = await db.list.update({
+    note = await db.note.update({
       where: {
         id,
-        boardId,
-        board: {
-          orgId,
-        },
+        orgId,
       },
       data: {
         title,
@@ -32,17 +29,17 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     });
 
     await createAuditLog({
-      entityId: list.id,
-      entityTitle: list.title,
-      entityType: ENTITY_TYPE.LIST,
+      entityId: note.id,
+      entityTitle: note.title,
+      entityType: ENTITY_TYPE.NOTE,
       action: ACTION.RENAME,
     });
   } catch (error) {
-    return { error: "Database error when renaming list." };
+    return { error: "Database error when renaming note."};
   }
 
-  revalidatePath(`/board/${boardId}`);
-  return { data: list };
+  revalidatePath(`/note/${id}`);
+  return { data: note };
 };
 
-export const renameList = createSafeAction(RenameList, handler);
+export const renameNote = createSafeAction(RenameNote, handler);

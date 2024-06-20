@@ -30,7 +30,7 @@ export const BoardList = async () => {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center font-semibold text-lg text-neutral-700">
+      <div className="flex items-center font-semibold text-lg text-neutral-700 dark:text-neutral-300">
         <LayoutDashboard className="h-6 w-6 mr-2" />
         Your Boards
       </div>
@@ -56,10 +56,10 @@ export const BoardList = async () => {
           </div>
         ))}
 
-        <BoardPopover side="right" sideOffset={10}>
+        <BoardPopover sideOffset={10}>
           <div
             role="button"
-            className="aspect-video relative h-full w-full bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-60 transition"
+            className="aspect-video relative h-full w-full bg-neutral-300 dark:bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-60 transition"
           >
             <p className="text-sm">Create New Board</p>
             <span className="text-sm">

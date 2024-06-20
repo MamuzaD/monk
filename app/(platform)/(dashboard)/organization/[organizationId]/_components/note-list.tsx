@@ -29,16 +29,16 @@ export const NoteList = async () => {
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {notes.map((note) => (
-            <Link
-              key={note.id}
-              href={`/note/${note.id}`}
-              className="group relative aspect-[4/6] bg-no-repeat bg-center bg-cover bg-muted rounded-sm p-2 overflow-hidden shadow-md"
-            >
-              <div className="absolute inset-0 group-hover:bg-neutral-200 transition" />
-              <p className="relative font-bold text-neutral-800 top-1">
-                {note.title}
-              </p>
-            </Link>
+          <Link
+            key={note.id}
+            href={`/note/${note.id}`}
+            className="group relative aspect-[4/6] bg-no-repeat bg-center bg-cover bg-muted rounded-sm p-2 overflow-hidden shadow-md"
+          >
+            <div className="absolute inset-0 group-hover:bg-neutral-200 dark:group-hover:bg-neutral-900/40 transition" />
+            <p className="relative font-bold text-neutral-800 dark:text-neutral-200 top-1">
+              {note.title}
+            </p>
+          </Link>
         ))}
 
         <NotePopover side="right" sideOffset={10}>

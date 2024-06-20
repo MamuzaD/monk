@@ -5,7 +5,6 @@ import { RefObject } from "react";
 
 interface RenameBoardProps {
   board: Board;
-  closeRef: RefObject<HTMLButtonElement>;
   inputRef: RefObject<HTMLInputElement>;
   formRef: RefObject<HTMLFormElement>;
   onSubmit?: (formData: FormData) => void;
@@ -15,7 +14,6 @@ interface RenameBoardProps {
 
 export const RenameBoard = ({
   board,
-  closeRef,
   inputRef,
   formRef,
   onSubmit,
@@ -27,7 +25,6 @@ export const RenameBoard = ({
       sideOffset={5}
       board={board}
       formRef={formRef}
-      closeRef={closeRef}
       inputRef={inputRef}
       onSubmit={onSubmit}
       fieldErrors={fieldErrors}

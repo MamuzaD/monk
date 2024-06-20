@@ -28,20 +28,22 @@ export const Navbar = () => {
       </div>
       <div className="ml-auto flex items-center gap-x-5">
         <ModeToggle />
-        <OrganizationSwitcher
-          hidePersonal
-          afterCreateOrganizationUrl="/organization/:id"
-          afterLeaveOrganizationUrl="/select-org"
-          afterSelectOrganizationUrl="/organization/:id"
-          appearance={{
-            elements: {
-              avatarBox: {
-                height: 32,
-                width: 32,
+        <div className="md:block hidden">
+          <OrganizationSwitcher
+            hidePersonal
+            afterCreateOrganizationUrl="/organization/:id"
+            afterLeaveOrganizationUrl="/select-org"
+            afterSelectOrganizationUrl="/organization/:id"
+            appearance={{
+              elements: {
+                avatarBox: {
+                  height: 32,
+                  width: 32,
+                },
               },
-            },
-          }}
-        />
+            }}
+          />
+        </div>
         <UserButton
           afterSignOutUrl="/"
           appearance={{

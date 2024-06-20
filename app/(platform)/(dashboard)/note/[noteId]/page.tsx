@@ -1,13 +1,33 @@
-"use client";
-import "@blocknote/core/fonts/inter.css";
-import { useCreateBlockNote } from "@blocknote/react";
-import { BlockNoteView } from "@blocknote/mantine";
-import "@blocknote/mantine/style.css";
+import { NoteHeader } from "./_components/note-header";
+import { Editor } from "./_components/editor";
+import { db } from "@/lib/db";
+import { useOrganization } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
-export default function NoteIdPage() {
-  // Creates a new editor instance.
-  const editor = useCreateBlockNote();
+interface NoteIdProps {
+  params: {
+    noteId: string;
+  };
+}
 
-  // Renders the editor instance using a React component.
-  return <BlockNoteView editor={editor} theme="light" />;
+export default async function NoteIdPage({ params }: NoteIdProps) {
+  const { orgId } = auth();
+
+  if (!orgId) redirect("/select-org");
+
+  const note = await db.note.findUnique({
+    where: {
+      orgId,
+      id: params.noteId,
+    },
+  });
+
+  if(!note) redirect(`/organization/${orgId}/notes`)
+
+  return (
+    <div className="">
+      <Editor note={note} />
+    </div>
+  );
 }

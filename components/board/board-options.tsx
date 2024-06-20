@@ -13,6 +13,7 @@ import { useRenameBoard } from "@/hooks/use-renameboard";
 import { Board } from "@prisma/client";
 import { DeleteBoard } from "./delete-board";
 import { RenameBoard } from "./rename-board";
+import { BoardImage } from "./board-image";
 
 interface BoardOptionsProps {
   board: Board;
@@ -21,6 +22,7 @@ interface BoardOptionsProps {
 export const BoardOptions = ({ board }: BoardOptionsProps) => {
   const { closeRef, formRef, inputRef, onSubmit, fieldErrors, isLoading } =
     useRenameBoard({ board });
+
 
   return (
     <Popover>
@@ -49,12 +51,12 @@ export const BoardOptions = ({ board }: BoardOptionsProps) => {
         <RenameBoard
           board={board}
           formRef={formRef}
-          closeRef={closeRef}
           inputRef={inputRef}
           onSubmit={onSubmit}
           fieldErrors={fieldErrors} 
           isLoading={isLoading}
         />
+        <BoardImage id={board.id} />
         <DeleteBoard title={board.title} id={board.id} />
       </PopoverContent>
     </Popover>

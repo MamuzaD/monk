@@ -16,7 +16,6 @@ import { RefObject } from "react";
 
 interface RenameConfirmProps {
   board: Board;
-  closeRef: RefObject<HTMLButtonElement>;
   inputRef: RefObject<HTMLInputElement>;
   formRef: RefObject<HTMLFormElement>;
   onSubmit?: (formData: FormData) => void;
@@ -30,7 +29,6 @@ interface RenameConfirmProps {
 
 export const RenameConfirm = ({
   board,
-  closeRef,
   inputRef,
   formRef,
   onSubmit,

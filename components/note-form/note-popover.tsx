@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/popover";
 import { useAction } from "@/hooks/use-action";
 import { useStripeModal } from "@/hooks/use-stripe-modal";
-import { createNote } from "@/actions/create-note";
+import { createNote } from "@/actions/note-actions/create-note";
 
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";

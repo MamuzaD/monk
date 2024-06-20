@@ -78,7 +78,7 @@ export const ListHeader = ({ list, onAddCard }: ListHeaderProps) => {
             defaultValue={list.boardId}
           />
           <FormInput
-            className="text-sm px-[7px] py-1 h-7 border-transparent hover:border-input focus:border-input transition truncate font-medium bg-transparent focus:bg-white"
+            className="text-sm px-[7px] py-1 h-7 border-transparent hover:border-input focus:border-input transition truncate font-medium bg-transparent"
             ref={inputRef}
             onBlur={onBlur}
             id="title"
