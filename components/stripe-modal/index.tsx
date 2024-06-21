@@ -26,13 +26,11 @@ export const StripeModal = () => {
   return (
     <Dialog open={stripeModal.isOpen} onOpenChange={stripeModal.onClose}>
       <DialogContent className="max-w-md p-0 overflow-hidden">
-        <div className="aspect-video relative fle items-center justify-center"></div>
-        <div className="text-neutral-700 mx-auto space-y-6 p-6">
+        <div className="text-neutral-700 mx-auto space-y-6 p-6 dark:text-neutral-300">
           <h2 className="font-semibold text-xl">Upgrade to Pro Version</h2>
-          <p className="text-xs font-semibold text-neutral-600"></p>
+          <p className="text-xs font-semibold text-neutral-600 dark:text-neutral-400"></p>
           <div className="pl-3">
-            <ul className="text-sm list-disc">
-              <li>Unlimted Workspaces</li>
+            <ul className="text-sm list-disc ml-10">
               <li>Unlimited Boards</li>
               <li>Unlimited Notes</li>
             </ul>

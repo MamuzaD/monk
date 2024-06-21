@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
@@ -18,11 +18,12 @@ model Board {
   id            String   @id @default(uuid())
   orgId         String
   title         String
-  imageId       String
-  imageThumbUrl String   @db.Text
-  imageFullUrl  String   @db.Text
-  imageLinkHTML String   @db.Text
-  imageUsername String   @db.Text
+  imageId       String?
+  imageThumbUrl String?   @db.Text
+  imageFullUrl  String?   @db.Text
+  imageLinkHTML String?   @db.Text
+  imageUsername String?   @db.Text
+  color         String?   
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   lists         List[]
@@ -89,7 +90,7 @@ model AuditLog {
   userName    String      @db.Text
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt 
+  updatedAt DateTime @updatedAt
 }
 
 model OrgLimit {

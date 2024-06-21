@@ -41,11 +41,15 @@ export const BoardList = async () => {
             key={board.id}
           >
             <div className="absolute top-2 right-2 z-10">
-               <BoardOptions board={board} /> 
+              <BoardOptions board={board} />
             </div>
             <Link
               href={`/board/${board.id}`}
-              style={{ backgroundImage: `url(${board.imageThumbUrl})` }}
+              style={
+                board.color
+                  ? { backgroundColor: board.color }
+                  : { backgroundImage: `url(${board.imageFullUrl})` }
+              }
               className="relative aspect-video bg-no-repeat bg-center bg-cover bg-neutral-400 rounded-sm h-full w-full p-2 overflow-hidden block "
             >
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/60 transition" />

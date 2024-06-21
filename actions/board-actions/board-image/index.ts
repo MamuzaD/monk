@@ -14,37 +14,58 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
   if (!userId || !orgId) return { error: "unauthorized to create" };
 
-  const { id, image } = data;
-
-  const [imageId, imageThumbUrl, imageFullUrl, imageLinkHTML, imageUsername] =
-    image.split("|");
-
-  if (
-    !imageId ||
-    !imageThumbUrl ||
-    !imageFullUrl ||
-    !imageUsername ||
-    !imageLinkHTML
-  )
-    return { error: "Missing image fields, failed to create board" };
+  const { id, image, color } = data;
 
   let board;
 
   try {
-    board = await db.board.update({
-      where: {
-        id,
-        orgId,
-      },
-      data: {
+    if (image) {
+    let color = null; //delete previous value
+      const [
         imageId,
         imageThumbUrl,
         imageFullUrl,
         imageLinkHTML,
         imageUsername,
-      },
-    });
+      ] = image.split("|");
 
+      board = await db.board.update({
+        where: {
+          id,
+          orgId,
+        },
+        data: {
+          color,
+          imageId,
+          imageThumbUrl,
+          imageFullUrl,
+          imageLinkHTML,
+          imageUsername,
+        },
+      });
+    } else {
+      //delete previous values
+      const imageId = null,
+        imageThumbUrl = null,
+        imageFullUrl = null,
+        imageLinkHTML = null,
+        imageUsername = null;
+
+      board = await db.board.update({
+        where: {
+          id,
+          orgId,
+        },
+        data: {
+          color,
+          imageFullUrl,
+          imageId,
+          imageLinkHTML,
+          imageThumbUrl,
+          imageUsername,
+        },
+      });
+    }
 
     await createAuditLog({
       entityId: board.id,

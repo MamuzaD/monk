@@ -32,6 +32,7 @@ export const useRenameBoard = ({ board }: UseRenameBoardProps) => {
     setIsEditing(true);
     setTimeout(() => {
       inputRef.current?.focus();
+      inputRef.current?.select();
     });
   };
 

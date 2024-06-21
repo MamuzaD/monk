@@ -13,27 +13,14 @@ interface NoteHeaderProps {
 
 export const NoteHeader = ({ note }: NoteHeaderProps) => {
   const [title, setTitle] = useState(note.title);
-  const [isEditing, setIsEditing] = useState(false);
 
   const formRef = useRef<ElementRef<"form">>(null);
   const inputRef = useRef<ElementRef<"input">>(null);
-
-  const enableEditing = () => {
-    setIsEditing(true);
-    setTimeout(() => {
-      inputRef.current?.focus();
-    });
-  };
-
-  const disableEditing = () => {
-    setIsEditing(false);
-  };
 
   const { execute, fieldErrors } = useAction(renameNote, {
     onSuccess: (note) => {
       toast.success(`Note "${title}" renamed to "${note.title}"`);
       setTitle(note.title);
-      disableEditing();
     },
     onError: (error) => {
       toast.error(error);
@@ -44,7 +31,7 @@ export const NoteHeader = ({ note }: NoteHeaderProps) => {
     const title = formData.get("title") as string;
     const id = formData.get("id") as string;
 
-    if (title === note.title) return disableEditing();
+    if (title === note.title) return;
 
     execute({ title, id });
   };

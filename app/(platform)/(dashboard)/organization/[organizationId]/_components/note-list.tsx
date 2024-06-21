@@ -23,7 +23,7 @@ export const NoteList = async () => {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center font-semibold text-lg text-neutral-700 dark:neutral-300">
+      <div className="flex items-center font-semibold text-lg text-neutral-700 dark:text-neutral-300">
         <Notebook className="h-6 w-6 mr-2" />
         Your Notes
       </div>
@@ -47,10 +47,10 @@ export const NoteList = async () => {
             className="aspect-video relative h-full w-full bg-neutral-300 dark:bg-muted  rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-60 transition"
           >
             <p className="text-sm">Create New Note</p>
-            <span className="text-sm">5 remaining</span>
+            <span className="text-sm">3 remaining</span>
             <Hint
               sideOffset={40}
-              description={`Free workspaces can have up to 5 open boards, upgrade for unlimited.`}
+              description={`Free workspaces can have up to 3 open notes, upgrade for unlimited.`}
             >
               <HelpCircle className="absolute bottom-2 right-2 h-[14px] w-[14px]" />
             </Hint>

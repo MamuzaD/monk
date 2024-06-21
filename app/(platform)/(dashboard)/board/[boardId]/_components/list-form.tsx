@@ -24,7 +24,8 @@ export const ListForm = () => {
     setIsEditing(true);
     setTimeout(() => {
       inputRef.current?.focus();
-    }, 0);
+      inputRef.current?.select();
+    });
   };
 
   const disableEditing = () => {
@@ -56,7 +57,6 @@ export const ListForm = () => {
     execute({ title, boardId });
   };
 
-
   if (isEditing)
     return (
       <ListWrapper>
@@ -72,13 +72,11 @@ export const ListForm = () => {
             className="py-2 h-5 font-medium border-transparent hover:border-input focus:border-input transition focus-visible:ring-0 border-0"
             placeholder="Enter list title..."
           />
-          <input
-            hidden
-            defaultValue={params.boardId}
-            name="boardId"
-          />
+          <input hidden defaultValue={params.boardId} name="boardId" />
           <div className="flex items-center gap-x-1">
-            <FormSubmit className="pt-19 dark:bg-neutral-900 dark:text-neutral-100">Add List</FormSubmit>
+            <FormSubmit className="pt-19 dark:bg-neutral-900 dark:text-neutral-100">
+              Add List
+            </FormSubmit>
             <Button onClick={disableEditing} size="sm" variant="ghost">
               <X className="h-5 w-5" />
             </Button>

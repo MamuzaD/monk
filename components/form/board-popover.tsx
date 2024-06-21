@@ -51,9 +51,12 @@ export const BoardPopover = ({
 
   const onSubmit = (formData: FormData) => {
     const title = formData.get("title") as string;
-    const image = formData.get("image") as string;
-    
-    execute({ title, image });
+    let image = formData.get("image") as string;
+    let color = formData.get("color") as string;
+
+
+    if (!color) execute({ title, image });
+    if (!image) execute({ title, color });
   };
 
   return (
@@ -79,7 +82,7 @@ export const BoardPopover = ({
         </PopoverClose>
         <form action={onSubmit} className="space-y-4">
           <div className="space-y-4">
-            <FormPicker id="image" errors={fieldErrors} />
+            <FormPicker errors={fieldErrors} />
             <FormInput
               id="title"
               label="Board Title"

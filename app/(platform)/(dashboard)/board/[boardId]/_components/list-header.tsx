@@ -25,6 +25,7 @@ export const ListHeader = ({ list, onAddCard }: ListHeaderProps) => {
     setIsEditing(true);
     setTimeout(() => {
       inputRef.current?.focus();
+      inputRef.current?.select();
     });
   };
 
@@ -65,7 +66,6 @@ export const ListHeader = ({ list, onAddCard }: ListHeaderProps) => {
 
   useEventListener("keydown", onKeyDown);
 
-  
   return (
     <div className="pt-2 px-2 text-sm font-semibold flex justify-between items-start gap-x-2">
       {isEditing ? (

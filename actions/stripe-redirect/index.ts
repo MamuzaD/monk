@@ -47,7 +47,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
                 name: "Min Kanban Pro",
                 description: "Unlimited workspaces, boards, notes",
               },
-              unit_amount: 100,
+              unit_amount: 0,
               recurring: { interval: "month" },
             },
             quantity: 1,

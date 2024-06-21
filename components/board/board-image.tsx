@@ -14,7 +14,7 @@ export const BoardImage = ({ id, closeRef }: BoardImageProps) => {
   const { execute, fieldErrors, isLoading } = useAction(boardImage, {
     onSuccess: (board) => {
       toast.success(`Board "${board.title}" image updated`);
-      closeRef.current?.click(); //close board options 
+      closeRef.current?.click(); //close board options
     },
     onError: (error) => {
       toast.error(error);
@@ -23,8 +23,10 @@ export const BoardImage = ({ id, closeRef }: BoardImageProps) => {
 
   const onSubmit = (formData: FormData) => {
     const image = formData.get("image") as string;
+    const color = formData.get("color") as string;
 
-    execute({ id, image });
+    if (!color) execute({ id, image });
+    if (!image) execute({ id, color });
   };
 
   return (
