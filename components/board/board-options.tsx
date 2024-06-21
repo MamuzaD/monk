@@ -36,12 +36,12 @@ export const BoardOptions = ({ board }: BoardOptionsProps) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="px-0 py-3" side="bottom" align="start">
-        <div className="text-sm font-medium text-center text-neutral-600 pb-4">
+        <div className="text-sm font-medium text-center text-neutral-800 dark:text-neutral-200 pb-4">
           Board Actions
         </div>
         <PopoverClose asChild ref={closeRef}>
           <Button
-            className="h-auto w-auto p-2 rounded-full absolute top-2 right-2 text-neutral-600"
+            className="h-auto w-auto p-2 rounded-full absolute top-2 right-2 text-neutral-600 dark:text-neutral-400"
             variant="ghost"
           >
             <X className="h-4 w-4" />
@@ -53,10 +53,10 @@ export const BoardOptions = ({ board }: BoardOptionsProps) => {
           formRef={formRef}
           inputRef={inputRef}
           onSubmit={onSubmit}
-          fieldErrors={fieldErrors} 
+          fieldErrors={fieldErrors}
           isLoading={isLoading}
         />
-        <BoardImage id={board.id} />
+        <BoardImage id={board.id} closeRef={closeRef} />
         <DeleteBoard title={board.title} id={board.id} />
       </PopoverContent>
     </Popover>

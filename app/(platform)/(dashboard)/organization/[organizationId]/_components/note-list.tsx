@@ -23,7 +23,7 @@ export const NoteList = async () => {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center font-semibold text-lg text-neutral-700">
+      <div className="flex items-center font-semibold text-lg text-neutral-700 dark:neutral-300">
         <Notebook className="h-6 w-6 mr-2" />
         Your Notes
       </div>
@@ -44,7 +44,7 @@ export const NoteList = async () => {
         <NotePopover side="right" sideOffset={10}>
           <div
             role="button"
-            className="aspect-video relative h-full w-full bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-60 transition"
+            className="aspect-video relative h-full w-full bg-neutral-300 dark:bg-muted  rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-60 transition"
           >
             <p className="text-sm">Create New Note</p>
             <span className="text-sm">5 remaining</span>

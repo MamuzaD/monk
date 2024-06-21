@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Plus } from "lucide-react";
+import { FileText, Plus } from "lucide-react";
 import { useLocalStorage } from "usehooks-ts";
 import { useOrganization, useOrganizationList } from "@clerk/nextjs";
 
@@ -51,19 +51,28 @@ export const Sidebar = ({
             type="button"
             size="icon"
             variant="ghost"
-            className="ml-auto p-1 h-auto w-auto rounded-full"
+            className="ml-auto mr-1 h-9 w-9 p-2.5"
           >
-            <Plus className="h-4 w-4" />
+              <Plus className="h-4 w-4" />
           </Button>
         </NotePopover>
       </div>
       <Accordion
         type="multiple"
         defaultValue={defaultAccordionValue}
-        className="space-y-2"
+        className="space-y-2 pb-2"
       >
         {notes.map((note) => (
-          <p key={note.id}>{note.title}</p>
+          <Link
+            key={note.id}
+            href={`/note/${note.id}`}
+            className="flex flex-col my-2 ml-3 hover:opacity-60 transition-all"
+          >
+            <div className="flex flex-row py-1 px-2 items-center">
+              <FileText className="h-4 w-4 mr-2" />
+              <span>{note.title}</span>
+            </div>
+          </Link>
         ))}
       </Accordion>
     </div>

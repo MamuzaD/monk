@@ -63,13 +63,13 @@ export const NotePopover = ({
         align={align}
         className=" w-96"
       >
-        <div className="text-sm font-medium text-center text-neutral-800">
+        <div className="text-sm font-medium text-center text-neutral-800 dark:text-neutral-200">
           Create Note
           <Separator />
         </div>
         <PopoverClose asChild ref={closeRef}>
           <Button
-            className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600 rounded-full"
+            className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600 dark:text-neutral-400 rounded-full"
             variant="ghost"
           >
             <X className="h-4 w-4" />

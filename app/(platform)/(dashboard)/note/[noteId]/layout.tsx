@@ -42,11 +42,13 @@ const NoteIdLayout = async ({
   });
 
   return (
-    <main className="pt-16 md:pt-24 px-4 max-w-6xl 2xl:max-w-screen-xl flex">
-      <div className="w-64 shrink-0 hidden md:block">
-        <Sidebar notes={notes}/>
+    <main className="pt-16 md:pt-24 px-4 max-w-6xl 2xl:max-w-screen-xl mx-auto">
+      <div className="flex gap-x-7">
+        <div className="w-64 shrink-0 hidden md:block">
+          <Sidebar notes={notes} />
+        </div>
+        <div className="flex-grow">{children}</div>
       </div>
-      <div className="ml-20 flex-grow">{children}</div>
     </main>
   );
 };

@@ -3,15 +3,18 @@ import { useAction } from "@/hooks/use-action";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
 import { ImageConfirm } from "./image-confirm";
+import { RefObject } from "react";
 
 interface BoardImageProps {
   id: string;
+  closeRef: RefObject<HTMLButtonElement>;
 }
 
-export const BoardImage = ({ id }: BoardImageProps) => {
+export const BoardImage = ({ id, closeRef }: BoardImageProps) => {
   const { execute, fieldErrors, isLoading } = useAction(boardImage, {
     onSuccess: (board) => {
       toast.success(`Board "${board.title}" image updated`);
+      closeRef.current?.click(); //close board options 
     },
     onError: (error) => {
       toast.error(error);
@@ -25,7 +28,7 @@ export const BoardImage = ({ id }: BoardImageProps) => {
   };
 
   return (
-    <ImageConfirm onSubmit={onSubmit}>
+    <ImageConfirm onSubmit={onSubmit} errors={fieldErrors}>
       <Button
         variant="ghost"
         disabled={isLoading}

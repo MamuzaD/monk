@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
-import { Check, Loader, RefreshCcwIcon } from "lucide-react";
+import { Check, Loader, } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,7 +10,6 @@ import { unsplash } from "@/lib/unsplash";
 import { cn } from "@/lib/utils";
 import { basicImages } from "@/constants/images";
 import { FormError } from "./form-error";
-import { Button } from "../ui/button";
 
 interface FormPickerProps {
   id: string;
@@ -75,6 +74,7 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
               type="radio"
               id={id}
               name={id}
+              readOnly
               checked={selectedImageId === image.id}
               disabled={pending}
               defaultValue={`${image.id}|${image.urls.thumb}|${image.urls.full}|${image.links.html}|${image.user.name}`}

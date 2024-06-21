@@ -68,7 +68,7 @@ export const Sidebar = ({ storageKey = "sidebar-state" }: SidebarProps) => {
           type="button"
           size="icon"
           variant="ghost"
-          className="ml-auto"
+          className="ml-auto mr-1"
         >
           <Link href="/select-org">
             <Plus className="h-4 w-4" />

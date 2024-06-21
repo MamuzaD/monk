@@ -47,27 +47,29 @@ export const DeleteConfirm = ({
         align={align}
         className="w-96"
       >
-        <div className="text-sm font-medium text-center text-neutral-800">
+        <div className="text-sm font-medium text-center text-neutral-800 dark:text-neutral-200">
           Delete Board
           <Separator className="my-2" />
         </div>
         <PopoverClose asChild>
           <Button
-            className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600 rounded-full"
+            className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600 dark:text-neutral-400 rounded-full"
             variant="ghost"
           >
             <X className="h-4 w-4" />
           </Button>
         </PopoverClose>
         <form action={onSubmit} className="space-y-4">
-            <FormInput
-              disabled={isLoading}
-              placeholder={title}
-              id="title"
-              label={`Enter "${title}" to confirm`}
-              type="text"
-            />
-          <FormSubmit className="w-full mt-10" variant="destructive">Delete Board</FormSubmit>
+          <FormInput
+            disabled={isLoading}
+            placeholder={title}
+            id="title"
+            label={`Enter "${title}" to confirm`}
+            type="text"
+          />
+          <FormSubmit className="w-full mt-10" variant="destructive">
+            Delete Board
+          </FormSubmit>
         </form>
       </PopoverContent>
     </Popover>
