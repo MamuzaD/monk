@@ -37,7 +37,7 @@ export const ImageConfirm = ({ onSubmit, children, errors }: ImageConfirmProps) 
           </Button>
         </PopoverClose>
         <form action={onSubmit} className="space-y-4">
-          <FormPicker id="image" errors={errors}/>
+          <FormPicker errors={errors}/>
           <FormSubmit className="w-full mt-10">Change Image</FormSubmit>
         </form>
       </PopoverContent>
