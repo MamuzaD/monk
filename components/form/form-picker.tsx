@@ -71,10 +71,18 @@ export const FormPicker = ({ errors }: FormPickerProps) => {
   return (
     <Tabs defaultValue="images" className="mt-1">
       <TabsList className="grid w-full grid-cols-2 text-sm">
-        <TabsTrigger value="images" onClick={() => setSelectedColor(null)}>
+        <TabsTrigger
+          value="images"
+          onClick={() => setSelectedColor(null)}
+          disabled={pending}
+        >
           Images
         </TabsTrigger>
-        <TabsTrigger value="colors" onClick={() => setSelectedImageId(null)}>
+        <TabsTrigger
+          value="colors"
+          onClick={() => setSelectedImageId(null)}
+          disabled={pending}
+        >
           Colors
         </TabsTrigger>
       </TabsList>
@@ -122,8 +130,8 @@ export const FormPicker = ({ errors }: FormPickerProps) => {
                     className="hover:underline"
                   >
                     {image.user.name}
-                  </Link>
-                  {" "}on{" "}
+                  </Link>{" "}
+                  on{" "}
                   <Link
                     href="https://unsplash.com/"
                     target="_blank"
