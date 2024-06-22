@@ -44,8 +44,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
             price_data: {
               currency: "USD",
               product_data: {
-                name: "Min Kanban Pro",
-                description: "Unlimited workspaces, boards, notes",
+                name: "Monk Pro",
+                description: "Unlimited boards and notes",
               },
               unit_amount: 0,
               recurring: { interval: "month" },
