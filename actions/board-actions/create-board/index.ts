@@ -12,9 +12,13 @@ import { incrementAvailableCount, hasAvailableCount } from "@/lib/org-limit";
 import { checkSubscription } from "@/lib/subscription";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
-  const { userId, orgId } = auth();
+  const { userId, orgId, orgRole } = auth();
 
   if (!userId || !orgId) return { error: "unauthorized to create" };
+  if (orgRole === "org:member")
+    return {
+      error: "Members cannot create board, contact your organization admin",
+    };
 
   const canCreate = await hasAvailableCount();
   const isPro = await checkSubscription();

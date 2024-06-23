@@ -86,14 +86,13 @@ export const NavItem = ({
         )}
       >
         <div className="flex items-center gap-x-2">
-          <div className="h-7 w-7 relative">
             <Image
-              fill
+              height={28}
+              width={28}
               src={organization.imageUrl}
               alt="Organization"
               className="rounded-sm object-cover"
             ></Image>
-          </div>
           <span className="font-medium text-sm">{organization.name}</span>
         </div>
       </AccordionTrigger>

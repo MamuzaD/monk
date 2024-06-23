@@ -57,10 +57,10 @@ const BoardIdLayout = async ({
       <BoardNavbar board={board} />
       <div className="absolute inset-0 bg-black/20" />
       <main className="relative pt-28 h-full">
-        <NoteSidebar />
+        {/* <NoteSidebar /> */}
         {children}
         {board.imageLinkHTML ? (
-          <div className=" absolute bottom-1 right-4 text-white p-1 bg-black/50">
+          <div className="relative text-center md:absolute md:bottom-1 md:right-4 text-white p-1 bg-black/50">
             <Link
               href={board.imageLinkHTML}
               target="_blank"

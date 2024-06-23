@@ -45,7 +45,7 @@ export const BoardPopover = ({
     },
     onError: (error) => {
       toast.error(error);
-      stripeModal.onOpen();
+      if (error === "Reached max board limit") stripeModal.onOpen();
     },
   });
 
