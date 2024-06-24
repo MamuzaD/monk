@@ -8,7 +8,7 @@ const ClerkLayout = ({ children }: { children: React.ReactNode }) => {
         <Logo />
         <ModeToggle />
       </nav>
-      <div className="h-5/6 flex items-center justify-center sm:mt-24">{children}</div>
+      <div className="h-5/6 flex items-center justify-center mt-24">{children}</div>
     </>
   );
 };
