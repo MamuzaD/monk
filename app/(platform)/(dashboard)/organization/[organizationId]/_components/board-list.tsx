@@ -60,7 +60,7 @@ export const BoardList = async () => {
           </div>
         ))}
 
-        <BoardPopover sideOffset={10}>
+        <BoardPopover sideOffset={-100} side="bottom">
           <div
             role="button"
             className="aspect-video relative h-full w-full bg-neutral-300 dark:bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-60 transition"

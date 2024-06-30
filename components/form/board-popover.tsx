@@ -66,7 +66,7 @@ export const BoardPopover = ({
         side={side}
         sideOffset={sideOffset}
         align={align}
-        className=" w-96"
+        className="lg:w-96"
       >
         <div className="text-sm font-medium text-center text-neutral-800 dark:text-neutral-200">
           Create Board
