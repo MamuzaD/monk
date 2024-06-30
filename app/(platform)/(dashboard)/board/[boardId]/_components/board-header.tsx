@@ -41,7 +41,7 @@ export const BoardHeader = ({ board }: BoardHeaderProps) => {
   return (
     <Hint
       description="Rename Board"
-      className="text-xs font-normal text-neutral-800"
+      className="text-xs font-normal text-neutral-800 dark:text-neutral-200"
     >
       <Button
         onClick={enableEditing}

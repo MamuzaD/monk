@@ -4,7 +4,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 const ClerkLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <nav className="fixed top-0 w-full h-14 px-4 border-b shadow-sm bg-white dark:bg-neutral-950 flex items-center justify-between">
+      <nav className="fixed top-0 w-full h-16 px-4 border-b shadow-sm bg-white dark:bg-neutral-950 flex items-center justify-between">
         <Logo />
         <ModeToggle />
       </nav>

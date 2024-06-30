@@ -1,6 +1,6 @@
 import { useRef, ElementRef } from "react";
 import { List } from "@prisma/client";
-import { MoreHorizontal, TextCursorInput, X } from "lucide-react";
+import { MoreHorizontal, X } from "lucide-react";
 import { useAction } from "@/hooks/use-action";
 import { deleteList } from "@/actions/list-actions/delete-list";
 import { copyList } from "@/actions/list-actions/copy-list";
@@ -13,11 +13,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { FormSubmit } from "@/components/form/form-submit";
 import { toast } from "sonner";
+import { Hint } from "@/components/hint";
 
 interface ListOptionsProps {
   list: List;
   onAddCard: () => void;
-  rename: () =>  void;
+  rename: () => void;
 }
 
 export const ListOptions = ({ list, onAddCard, rename }: ListOptionsProps) => {
@@ -69,12 +70,12 @@ export const ListOptions = ({ list, onAddCard, rename }: ListOptionsProps) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="px-0 py-3" side="bottom" align="start">
-        <div className="text-sm font-medium text-center text-neutral-600 pb-4">
+        <div className="text-sm font-medium text-center text-neutral-800 dark:text-neutral-200 pb-4">
           List Actions
         </div>
         <PopoverClose asChild ref={closeRef}>
           <Button
-            className="h-auto w-auto p-2 rounded-full absolute top-2 right-2 text-neutral-700"
+            className="h-auto w-auto p-2 rounded-full absolute top-2 right-2 text-neutral-700 dark:text-neutral-300"
             variant="ghost"
           >
             <X className="h-4 w-4" />
@@ -110,21 +111,27 @@ export const ListOptions = ({ list, onAddCard, rename }: ListOptionsProps) => {
             Copy list
           </FormSubmit>
         </form>
-        <form action={onDelete}>
-          <input name="id" id="id" defaultValue={list.id} hidden />
-          <input
-            name="boardId"
-            id="boardId"
-            defaultValue={list.boardId}
-            hidden
-          />
-          <FormSubmit
-            variant="ghost"
-            className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"
-          >
-            Delete this list
-          </FormSubmit>
-        </form>
+        <Hint
+          description="Permanent action"
+          className="text-xs font-normal border-red-500 bg-red-300 text-red-700"
+        >
+          <form action={onDelete}>
+            <input name="id" id="id" defaultValue={list.id} hidden />
+            <input
+              name="boardId"
+              id="boardId"
+              defaultValue={list.boardId}
+              hidden
+            />
+
+            <FormSubmit
+              variant="ghost"
+              className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"
+            >
+              Delete this list
+            </FormSubmit>
+          </form>
+        </Hint>
       </PopoverContent>
     </Popover>
   );
