@@ -15,11 +15,6 @@ export default function LandingPage() {
       <Button variant="secondary" className="mt-6" size="lg" asChild>
         <Link href="/sign-up">Continue ahead</Link>
       </Button>
-      <div className="mt-96">
-        <h1>
-          Simple
-        </h1>
-      </div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { renameList } from "@/actions/list-actions/rename-list";
-import { renameNote } from "@/actions/note-actions/rename-list";
+import { renameNote } from "@/actions/note-actions/rename-note";
 import { FormInput } from "@/components/form/form-input";
+import { Skeleton } from "@/components/ui/skeleton";
 import { useAction } from "@/hooks/use-action";
 import { Note } from "@prisma/client";
 import { useState, useRef, ElementRef } from "react";
@@ -62,5 +63,13 @@ export const NoteHeader = ({ note }: NoteHeaderProps) => {
       />
       <button type="submit" hidden />
     </form>
+  );
+};
+
+NoteHeader.Skeleton = function SkeletonNoteHeader() {
+  return (
+    <div className="flex flex-col items-center space-y-2">
+      <Skeleton className="md:h-20 md:w-[600px] h-16 w-72" />
+    </div>
   );
 };

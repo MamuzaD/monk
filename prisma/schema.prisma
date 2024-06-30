@@ -19,11 +19,11 @@ model Board {
   orgId         String
   title         String
   imageId       String?
-  imageThumbUrl String?   @db.Text
-  imageFullUrl  String?   @db.Text
-  imageLinkHTML String?   @db.Text
-  imageUsername String?   @db.Text
-  color         String?   
+  imageThumbUrl String?  @db.Text
+  imageFullUrl  String?  @db.Text
+  imageLinkHTML String?  @db.Text
+  imageUsername String?  @db.Text
+  color         String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   lists         List[]
@@ -59,7 +59,7 @@ model Note {
   id        String   @id @default(uuid())
   orgId     String
   title     String
-  content   Json
+  content   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
