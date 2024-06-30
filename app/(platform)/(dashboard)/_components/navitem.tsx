@@ -7,10 +7,18 @@ import {
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { Activity, CreditCard, Layout, NotebookPen, Settings } from "lucide-react";
-import { useRouter, usePathname } from "next/navigation";
+import {
+  Activity,
+  CreditCard,
+  Layout,
+  NotebookPen,
+  Settings,
+} from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import Link from "next/link";
+import { revalidatePath } from "next/cache";
 
 export type Organization = {
   id: string;
@@ -71,31 +79,33 @@ export const NavItem = ({
       <AccordionTrigger
         onClick={() => onExpand(organization.id)}
         className={cn(
-          "flex items-center gap-x-2 p-1.5 text-neutral-700 rounded-md hover:bg-neutral-500/10 transition text-start no-underline hover:no-underline",
-          isActive && !isExpanded && "bg-sky-500/10 text-sky-700"
+          "flex items-center gap-x-2 p-1.5 text-neutral-700 dark:text-neutral-300 rounded-md hover:bg-neutral-500/10 transition text-start no-underline hover:no-underline",
+          isActive &&
+            !isExpanded &&
+            "bg-sky-500/10 text-sky-700 dark:text-sky-300 dark:bg-sky"
         )}
       >
         <div className="flex items-center gap-x-2">
-          <div className="h-7 w-7 relative">
             <Image
-              fill
+              height={28}
+              width={28}
               src={organization.imageUrl}
               alt="Organization"
               className="rounded-sm object-cover"
             ></Image>
-          </div>
           <span className="font-medium text-sm">{organization.name}</span>
         </div>
       </AccordionTrigger>
-      <AccordionContent className="pt-1 text-neutral-700">
+      <AccordionContent className="pt-1 text-neutral-700 dark:text-neutral-300">
         {routes.map((route) => (
           <Button
             key={route.href}
-            size="sm"
             onClick={() => onClick(route.href)}
+            size="sm"
             className={cn(
               "w-full font-normal justify-start pl-10 mb-1",
-              pathname === route.href && "bg-sky-500/10 text-sky-700"
+              pathname === route.href &&
+                "bg-sky-500/10 text-sky-700 dark:text-sky-300"
             )}
             variant="ghost"
           >

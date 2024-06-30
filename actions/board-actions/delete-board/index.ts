@@ -17,7 +17,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   if (!userId || !orgId) return { error: "unauthorized to delete" };
 
   const isPro = await checkSubscription();
-  const { id } = data;
+  const { id, title, input } = data;
+  if (title !== input) return { error: "Input is not board title" };
+
   let board;
   try {
     board = await db.board.delete({
@@ -29,11 +31,10 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
     if (!isPro) await decrementAvailableCount();
 
-    await createAuditLog({
-      entityId: board.id,
-      entityTitle: board.title,
-      entityType: ENTITY_TYPE.BOARD,
-      action: ACTION.DELETE,
+    await db.auditLog.deleteMany({
+      where: {
+        orgId,
+      },
     });
   } catch (error) {
     return { error: "Database error when deleting." };

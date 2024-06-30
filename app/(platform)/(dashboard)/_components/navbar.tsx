@@ -8,9 +8,10 @@ import {
 import { Plus } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
-import { FormPopover } from "@/components/form/form-popover";
+import { BoardPopover } from "@/components/form/board-popover";
 import { MobileSidebar } from "./mobile-sidebar";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export const Navbar = () => {
   const { isLoaded } = useOrganization();
@@ -18,7 +19,7 @@ export const Navbar = () => {
   if (!isLoaded) return <Navbar.Skeleton />;
 
   return (
-    <nav className="fixed z-50 top-0 px-4 w-full h-14 border-b shadow-sm bg-white flex items-center">
+    <nav className="fixed z-50 top-0 px-4 w-full h-14 border-b shadow-sm  bg-neutral-50 dark:bg-neutral-950 flex items-center">
       <MobileSidebar />
       <div className="flex items-center gap-x-4">
         <div className="hidden md:flex">
@@ -26,20 +27,23 @@ export const Navbar = () => {
         </div>
       </div>
       <div className="ml-auto flex items-center gap-x-5">
-        <OrganizationSwitcher
-          hidePersonal
-          afterCreateOrganizationUrl="/organization/:id"
-          afterLeaveOrganizationUrl="/select-org"
-          afterSelectOrganizationUrl="/organization/:id"
-          appearance={{
-            elements: {
-              avatarBox: {
-                height: 32,
-                width: 32,
+        <ModeToggle />
+        <div className="md:block hidden">
+          <OrganizationSwitcher
+            hidePersonal
+            afterCreateOrganizationUrl="/organization/:id"
+            afterLeaveOrganizationUrl="/select-org"
+            afterSelectOrganizationUrl="/organization/:id"
+            appearance={{
+              elements: {
+                avatarBox: {
+                  height: 32,
+                  width: 32,
+                },
               },
-            },
-          }}
-        />
+            }}
+          />
+        </div>
         <UserButton
           afterSignOutUrl="/"
           appearance={{
@@ -51,7 +55,7 @@ export const Navbar = () => {
             },
           }}
         />
-        <FormPopover align="start" side="bottom" sideOffset={16}>
+        <BoardPopover align="start" side="bottom" sideOffset={16}>
           <Button
             size={"sm"}
             className="rounded-full block p-2 h-auto w-auto mr-4 hover:opacity-80 md:rounded-xl"
@@ -61,7 +65,7 @@ export const Navbar = () => {
               <Plus className="h-4 w-4" />
             </span>
           </Button>
-        </FormPopover>
+        </BoardPopover>
       </div>
     </nav>
   );
@@ -69,7 +73,7 @@ export const Navbar = () => {
 
 Navbar.Skeleton = function SkeletonNavbar() {
   return (
-    <nav className="fixed z-50 top-0 px-4 w-full h-14 border-b shadow-sm bg-white flex items-center">
+    <nav className="fixed z-50 top-0 px-4 w-full h-14 border-b shadow-sm bg-white dark:bg-neutral-900 flex items-center">
       <MobileSidebar />
       <div className="flex items-center gap-x-4">
         <div className="hidden md:flex">

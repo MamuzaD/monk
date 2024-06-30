@@ -6,8 +6,7 @@ import { db } from "@/lib/db";
 import { createSafeAction } from "@/lib/create-safe-action";
 import { InputType, ReturnType } from "./types";
 import { StripeRedirect } from "./schema";
-import { createAuditLog } from "@/lib/create-audit-log";
-import { ACTION, ENTITY_TYPE } from "@prisma/client";
+
 import { absoluteUrl } from "@/lib/utils";
 import { stripe } from "@/lib/stripe";
 
@@ -45,10 +44,10 @@ const handler = async (data: InputType): Promise<ReturnType> => {
             price_data: {
               currency: "USD",
               product_data: {
-                name: "Min Kanban Pro",
-                description: "Unlimited workspaces, boards, notes",
+                name: "Monk Pro",
+                description: "Unlimited boards and notes",
               },
-              unit_amount: 100,
+              unit_amount: 0,
               recurring: { interval: "month" },
             },
             quantity: 1,

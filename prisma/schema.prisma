@@ -9,22 +9,24 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model Board {
   id            String   @id @default(uuid())
   orgId         String
   title         String
-  imageId       String
-  imageThumbUrl String   @db.Text
-  imageFullUrl  String   @db.Text
-  imageLinkHTML String   @db.Text
-  imageUsername String   @db.Text
+  imageId       String?
+  imageThumbUrl String?   @db.Text
+  imageFullUrl  String?   @db.Text
+  imageLinkHTML String?   @db.Text
+  imageUsername String?   @db.Text
+  color         String?   
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
-  Lists         List[]
+  lists         List[]
 }
 
 model List {
@@ -33,7 +35,7 @@ model List {
   order     Int
   boardId   String
   board     Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
-  Cards     Card[]
+  cards     Card[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -55,6 +57,7 @@ model Card {
 
 model Note {
   id        String   @id @default(uuid())
+  orgId     String
   title     String
   content   Json
   createdAt DateTime @default(now())
@@ -70,6 +73,7 @@ enum ACTION {
 
 enum ENTITY_TYPE {
   BOARD
+  NOTE
   LIST
   CARD
 }
@@ -90,6 +94,15 @@ model AuditLog {
 }
 
 model OrgLimit {
+  id    String @id @default(uuid())
+  orgId String @unique
+  count Int    @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model NoteLimit {
   id    String @id @default(uuid())
   orgId String @unique
   count Int    @default(0)
