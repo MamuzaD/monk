@@ -1,23 +1,23 @@
 import { auth } from "@clerk/nextjs/server";
 import { db } from "./db";
-import { MAX_FREE_BOARDS } from "@/constants/max-amount";
+import { MAX_FREE_NOTES } from "@/constants/max-amount";
 
 export const incrementAvailableCount = async () => {
   const { orgId } = auth();
 
   if (!orgId) throw new Error("Unauthorized");
 
-  const orgLimit = await db.orgLimit.findUnique({
+  const noteLimit = await db.noteLimit.findUnique({
     where: { orgId },
   });
 
-  if (orgLimit) {
-    await db.orgLimit.update({
+  if (noteLimit) {
+    await db.noteLimit.update({
       where: { orgId },
-      data: { count: orgLimit.count + 1 },
+      data: { count: noteLimit.count + 1 },
     });
   } else {
-    await db.orgLimit.create({
+    await db.noteLimit.create({
       data: { orgId, count: 1 },
     });
   }
@@ -28,17 +28,17 @@ export const decrementAvailableCount = async () => {
 
   if (!orgId) throw new Error("Unauthorized");
 
-  const orgLimit = await db.orgLimit.findUnique({
+  const noteLimit = await db.noteLimit.findUnique({
     where: { orgId },
   });
 
-  if (orgLimit) {
-    await db.orgLimit.update({
+  if (noteLimit) {
+    await db.noteLimit.update({
       where: { orgId },
-      data: { count: orgLimit.count > 0 ? orgLimit.count - 1 : 0 },
+      data: { count: noteLimit.count > 0 ? noteLimit.count - 1 : 0 },
     });
   } else {
-    await db.orgLimit.create({
+    await db.noteLimit.create({
       data: { orgId, count: 1 },
     });
   }
@@ -49,11 +49,11 @@ export const hasAvailableCount = async () => {
 
   if (!orgId) throw new Error("Unauthorized");
 
-  const orgLimit = await db.orgLimit.findUnique({
+  const noteLimit = await db.noteLimit.findUnique({
     where: { orgId },
   });
 
-  if (!orgLimit || orgLimit.count < MAX_FREE_BOARDS) return true;
+  if (!noteLimit || noteLimit.count < MAX_FREE_NOTES) return true;
 
   return false;
 };
@@ -63,11 +63,11 @@ export const getAvailableCount = async () => {
 
   if (!orgId) return 0;
 
-  const orgLimit = await db.orgLimit.findUnique({
+  const noteLimit = await db.noteLimit.findUnique({
     where: { orgId },
   });
 
-  if (!orgLimit) return 0;
+  if (!noteLimit) return 0;
 
-  return orgLimit.count;
+  return noteLimit.count;
 };

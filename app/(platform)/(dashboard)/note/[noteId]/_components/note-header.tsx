@@ -1,4 +1,3 @@
-import { renameList } from "@/actions/list-actions/rename-list";
 import { renameNote } from "@/actions/note-actions/rename-note";
 import { FormInput } from "@/components/form/form-input";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -52,7 +51,7 @@ export const NoteHeader = ({ note }: NoteHeaderProps) => {
     <form ref={formRef} action={onSubmit} className="flex-1 px-[2px]">
       <input hidden id="id" name="id" defaultValue={note.id} />
       <FormInput
-        className="text-5xl h-auto px-[7px] py-1 my-3 border-transparent hover:border-input focus:border-input transition truncate font-medium bg-transparent text-center"
+        className="text-5xl h-auto px-[7px] py-1 my-3 border-transparent hover:border-input focus:border-input transition truncate font-bold bg-transparent text-center"
         ref={inputRef}
         onBlur={onBlur}
         id="title"

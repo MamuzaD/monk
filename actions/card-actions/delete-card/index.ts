@@ -12,7 +12,7 @@ import { ACTION, ENTITY_TYPE } from "@prisma/client";
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
 
-  if (!userId || !orgId) return { error: "unauthorized to delete" };
+  if (!userId || !orgId) return { error: "Unauthorized to delete card" };
 
   const { id, boardId } = data;
   let card;

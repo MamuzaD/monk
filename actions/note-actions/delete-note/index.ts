@@ -5,8 +5,8 @@ import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import { createSafeAction } from "@/lib/create-safe-action";
 import { InputType, ReturnType } from "./types";
-import { DeleteBoard } from "./schema";
-import { decrementAvailableCount } from "@/lib/org-limit";
+import { DeleteNote } from "./schema";
+import { decrementAvailableCount } from "@/lib/note-limit";
 import { checkSubscription } from "@/lib/subscription";
 import { createAuditLog } from "@/lib/create-audit-log";
 import { ACTION, ENTITY_TYPE } from "@prisma/client";
@@ -14,15 +14,15 @@ import { ACTION, ENTITY_TYPE } from "@prisma/client";
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
 
-  if (!userId || !orgId) return { error: "Unauthorized to delete board" };
+  if (!userId || !orgId) return { error: "Unauthorized to delete note." };
 
   const isPro = await checkSubscription();
   const { id, title, input } = data;
   if (title !== input) return { error: "Input is not board title" };
-
-  let board;
+  
+  let note;
   try {
-    board = await db.board.delete({
+    note = await db.note.delete({
       where: {
         id,
         orgId,
@@ -32,17 +32,20 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     if (!isPro) await decrementAvailableCount();
 
     await createAuditLog({
-      entityId: board.id,
-      entityTitle: board.title,
-      entityType: ENTITY_TYPE.BOARD,
+      entityId: note.id,
+      entityTitle: note.title,
+      entityType: ENTITY_TYPE.NOTE,
       action: ACTION.DELETE,
     });
+    
   } catch (error) {
-    return { error: "Database error when deleting" };
+    return { error: "Database error when deleting note." };
   }
 
-  revalidatePath(`/organization/${orgId}`);
-  return { data: board };
+
+  console.log("weird");
+  revalidatePath(`/organization/${orgId}/notes`);
+  return { data: note };
 };
 
-export const deleteBoard = createSafeAction(DeleteBoard, handler);
+export const deleteNote = createSafeAction(DeleteNote, handler);

@@ -61,7 +61,7 @@ export const NotePopover = ({
         side={side}
         sideOffset={sideOffset}
         align={align}
-        className=" w-96"
+        className="w-96 z-[9999]"
       >
         <div className="text-sm font-medium text-center text-neutral-800 dark:text-neutral-200">
           Create Note

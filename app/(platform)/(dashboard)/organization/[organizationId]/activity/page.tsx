@@ -8,7 +8,7 @@ export default async function ActivityPage() {
   const isPro = await checkSubscription();
 
   return (
-    <div className="w-full">
+    <div className="w-full mb-10">
       <Info isPro={isPro} />
       <Separator className="my-2" />
       <Suspense fallback={<ActivityList.Skeleton />}>

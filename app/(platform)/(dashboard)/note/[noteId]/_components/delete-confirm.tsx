@@ -11,34 +11,35 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { FormSubmit } from "@/components/form/form-submit";
 import { FormInput } from "@/components/form/form-input";
-import { Board } from "@prisma/client";
-import { RefObject } from "react";
+import { useAction } from "@/hooks/use-action";
+import { deleteNote } from "@/actions/note-actions/delete-note";
 
-interface RenameConfirmProps {
-  board: Board;
-  inputRef: RefObject<HTMLInputElement>;
-  formRef: RefObject<HTMLFormElement>;
-  onSubmit?: (formData: FormData) => void;
-  fieldErrors: any;
-  isLoading: boolean;
+interface DeleteConfirmProps {
+  title: string;
+  id: string;
   children: React.ReactNode;
   side?: "top" | "right" | "bottom" | "left";
   sideOffset?: number;
   align?: "start" | "center" | "end";
 }
 
-export const RenameConfirm = ({
-  board,
-  inputRef,
-  formRef,
-  onSubmit,
-  fieldErrors,
-  isLoading,
+export const DeleteConfirm = ({
+  title,
+  id,
   children,
   side = "bottom",
   sideOffset = 0,
   align,
-}: RenameConfirmProps) => {
+}: DeleteConfirmProps) => {
+  const { execute, isLoading } = useAction(deleteNote);
+
+  const onSubmit = (formData: FormData) => {
+    const input = formData.get("title") as string;
+
+    execute({id, title, input});
+  };
+
+
   return (
     <Popover>
       <PopoverTrigger asChild>{children}</PopoverTrigger>
@@ -49,7 +50,7 @@ export const RenameConfirm = ({
         className="w-96"
       >
         <div className="text-sm font-medium text-center text-neutral-800 dark:text-neutral-200">
-          Rename Board
+          Delete Note
           <Separator className="my-2" />
         </div>
         <PopoverClose asChild>
@@ -60,16 +61,17 @@ export const RenameConfirm = ({
             <X className="h-4 w-4" />
           </Button>
         </PopoverClose>
-        <form action={onSubmit} ref={formRef} className="space-y-4">
+        <form action={onSubmit} className="space-y-4">
           <FormInput
             disabled={isLoading}
+            placeholder={title}
             id="title"
-            ref={inputRef}
-            errors={fieldErrors}
-            label={`Rename "${board.title}" to ...`}
+            label={`Enter "${title}" to confirm`}
             type="text"
           />
-          <FormSubmit className="w-full mt-10">Rename Board</FormSubmit>
+          <FormSubmit className="w-full mt-10" variant="destructive">
+            Delete Note
+          </FormSubmit>
         </form>
       </PopoverContent>
     </Popover>

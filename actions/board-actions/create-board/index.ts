@@ -14,7 +14,7 @@ import { checkSubscription } from "@/lib/subscription";
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId, orgRole } = auth();
 
-  if (!userId || !orgId) return { error: "unauthorized to create" };
+  if (!userId || !orgId) return { error: "Unauthorized to create board" };
   if (orgRole === "org:member")
     return {
       error: "Members cannot create board, contact your organization admin",

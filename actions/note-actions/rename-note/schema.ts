@@ -8,6 +8,8 @@ export const RenameNote = z.object({
     })
     .min(3, {
       message: "Title too short",
+    }).max(20, {
+      message: "Title too long",
     }),
   id: z.string(),
 });

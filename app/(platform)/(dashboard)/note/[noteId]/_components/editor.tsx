@@ -80,7 +80,7 @@ export const Editor = ({ note }: EditorProps) => {
         onChange={() => {
           saveDebounced(editor.document);
         }}
-        className="bg-white dark:bg-[#1F1F1F] pt-4 rounded-lg"
+        className="bg-white dark:bg-[#1F1F1F] pt-4 pb-2 rounded-lg"
       />
     </>
   );
@@ -89,7 +89,7 @@ export const Editor = ({ note }: EditorProps) => {
 Editor.Skeleton = function SkeletonEditor() {
   return (
     <div className="flex flex-col items-center">
-      <Skeleton className="md:h-[1200px] md:w-[900px] w-[22rem] h-[32rem] mt-2" />
+      <Skeleton className="md:h-[1200px] md:w-[900px] w-[22rem] h-[32rem] mt-5" />
     </div>
   );
 };

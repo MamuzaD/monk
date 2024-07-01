@@ -12,7 +12,7 @@ import { ENTITY_TYPE, ACTION } from "@prisma/client";
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
 
-  if (!userId || !orgId) return { error: "unauthorized to rename" };
+  if (!userId || !orgId) return { error: "Unauthorized to rename board" };
 
   const { title, id } = data;
   let board;

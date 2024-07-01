@@ -10,7 +10,7 @@ import { ReorderCards } from "./schema";
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
 
-  if (!userId || !orgId) return { error: "unauthorized to move cards" };
+  if (!userId || !orgId) return { error: "Unauthorized to reorder cards" };
 
   const { items, boardId } = data;
   let cards;

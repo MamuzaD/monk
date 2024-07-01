@@ -11,7 +11,7 @@ import { DeleteList } from "./schema";
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
 
-  if (!userId || !orgId) return { error: "unauthorized to delete" };
+  if (!userId || !orgId) return { error: "Unauthorized to delete list" };
 
   const { id, boardId } = data;
   let list;

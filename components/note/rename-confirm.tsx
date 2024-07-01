@@ -11,11 +11,11 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { FormSubmit } from "@/components/form/form-submit";
 import { FormInput } from "@/components/form/form-input";
-import { Board } from "@prisma/client";
+import { Note } from "@prisma/client";
 import { RefObject } from "react";
 
 interface RenameConfirmProps {
-  board: Board;
+  note: Note;
   inputRef: RefObject<HTMLInputElement>;
   formRef: RefObject<HTMLFormElement>;
   onSubmit?: (formData: FormData) => void;
@@ -28,7 +28,7 @@ interface RenameConfirmProps {
 }
 
 export const RenameConfirm = ({
-  board,
+  note,
   inputRef,
   formRef,
   onSubmit,
@@ -46,10 +46,10 @@ export const RenameConfirm = ({
         side={side}
         sideOffset={sideOffset}
         align={align}
-        className="w-96"
+        className="w-96 z-[9999]"
       >
         <div className="text-sm font-medium text-center text-neutral-800 dark:text-neutral-200">
-          Rename Board
+          Rename Note
           <Separator className="my-2" />
         </div>
         <PopoverClose asChild>
@@ -66,10 +66,10 @@ export const RenameConfirm = ({
             id="title"
             ref={inputRef}
             errors={fieldErrors}
-            label={`Rename "${board.title}" to ...`}
+            label={`Rename "${note.title}" to ...`}
             type="text"
           />
-          <FormSubmit className="w-full mt-10">Rename Board</FormSubmit>
+          <FormSubmit className="w-full mt-10">Rename Note</FormSubmit>
         </form>
       </PopoverContent>
     </Popover>

@@ -12,7 +12,7 @@ import { ACTION, ENTITY_TYPE } from "@prisma/client";
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
 
-  if (!userId || !orgId) return { error: "unauthorized to update" };
+  if (!userId || !orgId) return { error: "Unauthorized to update card" };
 
   const { id, boardId, ...values } = data;
   let card;

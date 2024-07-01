@@ -1,15 +1,15 @@
-import { HelpCircle, LayoutDashboard } from "lucide-react";
+import Link from "next/link";
 import { redirect } from "next/navigation";
+import { HelpCircle, LayoutDashboard } from "lucide-react";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import { BoardPopover } from "@/components/form/board-popover";
 import { Hint } from "@/components/hint";
-import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
-import { MAX_FREE_BOARDS } from "@/constants/boards";
+import { BoardOptions } from "@/components/board/board-options";
+import { MAX_FREE_BOARDS } from "@/constants/max-amount";
 import { getAvailableCount } from "@/lib/org-limit";
 import { checkSubscription } from "@/lib/subscription";
-import { BoardOptions } from "@/components/board/board-options";
 
 export const BoardList = async () => {
   const { orgId } = auth();
@@ -37,7 +37,7 @@ export const BoardList = async () => {
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {boards.map((board) => (
           <div
-            className="relative  rounded-sm overflow-hidden shadow-md"
+            className="relative rounded-sm overflow-hidden shadow-md"
             key={board.id}
           >
             <div className="absolute top-2 right-2 z-10">

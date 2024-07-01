@@ -35,7 +35,7 @@ export const ListHeader = ({ list, onAddCard }: ListHeaderProps) => {
 
   const { execute, fieldErrors } = useAction(renameList, {
     onSuccess: (list) => {
-      toast.success(`List ${title} renamed to ${list.title}.`);
+      toast.success(`List "${title}" renamed to "${list.title}"`);
       setTitle(list.title);
       disableEditing();
     },

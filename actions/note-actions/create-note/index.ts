@@ -8,7 +8,7 @@ import { createSafeAction } from "@/lib/create-safe-action";
 import { CreateNote } from "./schema";
 import { createAuditLog } from "@/lib/create-audit-log";
 import { ENTITY_TYPE, ACTION } from "@prisma/client";
-import { incrementAvailableCount, hasAvailableCount } from "@/lib/org-limit";
+import { incrementAvailableCount, hasAvailableCount } from "@/lib/note-limit";
 import { checkSubscription } from "@/lib/subscription";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -16,9 +16,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
   if (!userId || !orgId) return { error: "unauthorized to create" };
 
-  //const canCreate = await hasAvailableCount();
-  //const isPro = await checkSubscription();
-  //if (!canCreate && !isPro) return { error: "Reached max note limit" };
+  const canCreate = await hasAvailableCount();
+  const isPro = await checkSubscription();
+  if (!canCreate && !isPro) return { error: "Reached max note limit" };
   const { title } = data;
 
   let note;
@@ -32,7 +32,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
 
-    //if (!isPro) await incrementAvailableCount();
+    if (!isPro) await incrementAvailableCount();
 
     await createAuditLog({
       entityId: note.id,
