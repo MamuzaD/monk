@@ -37,7 +37,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
     
   } catch (error) {
-    return { error: "Database error when deleting." };
+    return { error: "Database error when deleting" };
   }
 
   revalidatePath(`/board/${boardId}`);

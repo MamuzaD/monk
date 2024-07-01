@@ -52,7 +52,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       action: ACTION.CREATE,
     });
   } catch (error) {
-    return { error: "Database error when creating card." };
+    return { error: "Database error when creating card" };
   }
 
   revalidatePath(`/board/${boardId}`);

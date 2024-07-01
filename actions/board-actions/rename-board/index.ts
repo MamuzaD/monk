@@ -35,7 +35,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       action: ACTION.RENAME,
     });
   } catch (error) {
-    return { error: "Database error when renaming." };
+    return { error: "Database error when renaming" };
   }
 
   revalidatePath(`/board/${id}`);

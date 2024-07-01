@@ -35,7 +35,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
     cards = await db.$transaction(transcation);
   } catch (error) {
-    return { error: "Database erorr when moving cards." };
+    return { error: "Database erorr when moving cards" };
   }
 
   revalidatePath(`/board/${boardId}`);

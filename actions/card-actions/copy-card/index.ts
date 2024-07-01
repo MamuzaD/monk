@@ -54,7 +54,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       action: ACTION.CREATE,
     });
   } catch (error) {
-    return { error: "Database error when copying." };
+    return { error: "Database error when copying" };
   }
 
   revalidatePath(`/board/${boardId}`);

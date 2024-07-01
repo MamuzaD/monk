@@ -35,7 +35,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       action: ACTION.UPDATE,
     });
   } catch (error) {
-    return { error: "Database error when updating." };
+    return { error: "Database error when updating" };
   }
 
   revalidatePath(`/note/${id}`);

@@ -14,7 +14,7 @@ import { ACTION, ENTITY_TYPE } from "@prisma/client";
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
 
-  if (!userId || !orgId) return { error: "Unauthorized to delete note." };
+  if (!userId || !orgId) return { error: "Unauthorized to delete note" };
 
   const isPro = await checkSubscription();
   const { id, title, input } = data;
@@ -39,7 +39,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     });
     
   } catch (error) {
-    return { error: "Database error when deleting note." };
+    return { error: "Database error when deleting note" };
   }
 
 

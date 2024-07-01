@@ -32,7 +32,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
     lists = await db.$transaction(transcation);
   } catch (error) {
-    return { error: "Database error when moving lists." };
+    return { error: "Database error when moving lists" };
   }
 
   revalidatePath(`/board/${boardId}`);
