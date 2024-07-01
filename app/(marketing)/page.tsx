@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function LandingPage() {
   return (
-    <div className="pt-24 flex items-center justify-center flex-col">
+    <div className="pt-40 md:pt-24 flex items-center justify-center flex-col">
       <div className="flex items-center justify-center flex-col">
         <h1 className="text-3xl md:text-6xl text-center pt-9  mb-6 font-extrabold tracking-widest">
           Monk

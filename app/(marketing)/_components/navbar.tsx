@@ -9,13 +9,15 @@ export const Navbar = () => {
       <div className="md:max-w-screen-2xl mx-auto flex items-center w-full justify-between">
         <Logo />
         <div className="space-x-4 w-auto h-auto flex items-center justify-end ">
-          
           <ModeToggle />
           <Button size={"sm"} variant={"outline"} asChild>
             <Link href="/sign-in">Login</Link>
           </Button>
           <Button size={"sm"} variant={"default"} asChild>
             <Link href="/sign-up">Sign Up</Link>
+          </Button>
+          <Button size={"sm"} variant={"secondary"} asChild>
+            <Link href="/demo">Demo</Link>
           </Button>
         </div>
       </div>
