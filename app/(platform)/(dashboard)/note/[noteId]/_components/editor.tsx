@@ -18,44 +18,51 @@ interface EditorProps {
   note: Note;
 }
 
-
 export const Editor = ({ note }: EditorProps) => {
   const { theme } = useTheme();
   const { execute } = useAction(updateNote, {
     onSuccess: () => {
-      toast.success("Note saved")
+      toast.success("Note saved");
     },
     onError: (error) => {
-      toast.error(error)
-    }
+      toast.error(error);
+    },
   });
 
   const [initialContent, setInitialContent] = useState<
     PartialBlock[] | undefined | "loading"
   >("loading");
 
-   useEffect(() => {
-    loadFromDatabase().then((content) => {
-      setInitialContent(content);
-    });
-  }, []);
- 
-  const saveToDatabase = async (jsonBlocks: Block[]) => {
-    const content = JSON.stringify(jsonBlocks);
-    await execute({ id: note.id, content: content });
-  };
-
   const loadFromDatabase = async () => {
     const storageString = note.content;
     return storageString
       ? (JSON.parse(storageString) as PartialBlock[])
       : undefined;
-  }
+  };
 
-  const saveDebounced = useMemo(() => debounce((jsonBlocks: Block[]) => {
-    saveToDatabase(jsonBlocks);
-  }, 2500), []); 
-  
+  useEffect(() => {
+    const loadFromDatabase = async () => {
+      const storageString = note.content;
+      return storageString
+        ? (JSON.parse(storageString) as PartialBlock[])
+        : undefined;
+    };
+
+    loadFromDatabase().then((content) => {
+      setInitialContent(content);
+    });
+  }, [note.content]);
+
+  const saveDebounced = useMemo(() => {
+    const saveToDatabase = async (jsonBlocks: Block[]) => {
+      const content = JSON.stringify(jsonBlocks);
+      await execute({ id: note.id, content: content });
+    };
+
+    return debounce((jsonBlocks: Block[]) => {
+      saveToDatabase(jsonBlocks);
+    }, 2500);
+  }, [note.id, execute]);
 
   const editor = useMemo(() => {
     if (initialContent === "loading") return undefined;

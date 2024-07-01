@@ -2,7 +2,6 @@ import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { notFound, redirect } from "next/navigation";
 import { BoardNavbar } from "./_components/board-navbar";
-import { NoteSidebar } from "./_components/note-sidebar";
 import Link from "next/link";
 
 export async function generateMetadata({
@@ -57,7 +56,6 @@ const BoardIdLayout = async ({
       <BoardNavbar board={board} />
       <div className="absolute inset-0 bg-black/20" />
       <main className="relative pt-28 h-full">
-        {/* <NoteSidebar /> */}
         {children}
         {board.imageLinkHTML ? (
           <div className="relative text-center md:absolute md:bottom-1 md:right-4 text-white p-1 bg-black/50">

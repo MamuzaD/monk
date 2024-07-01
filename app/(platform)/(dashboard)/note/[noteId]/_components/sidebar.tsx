@@ -64,19 +64,21 @@ export const Sidebar = ({
         className="space-y-2 pb-2"
       >
         {notes.map((note) => (
-          <div className="relative flex items-center my-2 ml-3 group">
-          <Link
+          <div
             key={note.id}
-            href={`/note/${note.id}`}
-            className="flex flex-row py-1 px-2 items-center hover:opacity-60 transition-all flex-grow"
+            className="relative flex items-center my-2 ml-3 group"
           >
-            <FileText className="h-4 w-4 mr-2 flex-shrink-0" />
-            <span className="truncate">{note.title}</span>
-          </Link>
-          <div className="mr-2 ml-1 opacity-0 group-hover:opacity-100 transition-opacity">
-            <NoteOptions note={note} />
+            <Link
+              href={`/note/${note.id}`}
+              className="flex flex-row py-1 px-2 items-center hover:opacity-60 transition-all flex-grow"
+            >
+              <FileText className="h-4 w-4 mr-2 flex-shrink-0" />
+              <span className="truncate">{note.title}</span>
+            </Link>
+            <div className="mr-2 ml-1 opacity-0 group-hover:opacity-100 transition-opacity">
+              <NoteOptions note={note} />
+            </div>
           </div>
-        </div>
         ))}
       </Accordion>
     </div>
