@@ -6,7 +6,7 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col items-center justify-center text-center">
       <h1 className="font-bold text-3xl md:text-6xl">
-        Monk's Terms of Service
+        Monk&apos;s Terms of Service
       </h1>
       <Separator className="mt-3 w-3/4" />
       <div className="text-xl md:text-2xl w-1/2 [&>h3]:mt-5 [&>h3]:font-medium [&>p]:mt-4 [&>p]:ml-4 text-left">
@@ -67,22 +67,12 @@ export default function AboutPage() {
         </p>
 
         <h3>5. Acceptable Use</h3>
-        <p>
-          Do not use this Service for illegal activities or to harm others.
-        </p>
+        <p>Do not use this Service for illegal activities or to harm others.</p>
 
         <h3>6. Termination</h3>
         <p>
           You can terminate your account at any time. Monk reserve the right to
           suspend or terminate accounts if necessary.
-        </p>
-
-        <h3>
-          7. Disclaimers and Limitation of Liability
-        </h3>
-        <p>
-          This Service is provided "as is" with no warranties. Monk am not
-          liable for any damages arising from your use of this Service.
         </p>
 
         <h3>8. Privacy Policy</h3>

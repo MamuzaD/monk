@@ -5,7 +5,9 @@ import Link from "next/link";
 export default function AboutPage() {
   return (
     <div className="flex flex-col items-center justify-center text-center">
-      <h1 className="font-bold text-3xl md:text-6xl">Monk's Privacy Policy</h1>
+      <h1 className="font-bold text-3xl md:text-6xl">
+        Monk&apos;s Privacy Policy
+      </h1>
       <Separator className="mt-3 w-3/4" />
       <div className="text-xl md:text-2xl w-1/2 [&>h3]:mt-5 [&>h3]:font-medium [&>p]:mt-4 [&>p]:ml-4 text-left">
         <h3>Privacy Policy</h3>
@@ -28,7 +30,7 @@ export default function AboutPage() {
             during registration.
           </li>
           <li>
-            Payment Information: If you choose to subscribe to Monk's paid
+            Payment Information: If you choose to subscribe to Monk&apos;s paid
             (free) plans, Stripe collects payment information through Stripe.
             This includes your payment method details
           </li>
@@ -57,7 +59,7 @@ export default function AboutPage() {
             during registration.
           </li>
           <li>
-            Payment Information: If you choose to subscribe to Monk's paid
+            Payment Information: If you choose to subscribe to Monk&apos;s paid
             (free) plans, Stripe collects payment information through Stripe.
             This includes your payment method details
           </li>
