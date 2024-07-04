@@ -1,21 +1,12 @@
 import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
 
 export default function AboutPage(){
   return (
-    <div className="flex flex-col items-center justify-center text-center">
+    <div className="mt-48 flex flex-col items-center justify-center text-center">
       <h1 className="font-bold text-3xl md:text-6xl">About Monk</h1>
-      <Separator className="mt-2" />
+      <Separator className="mt-3 w-3/4" />
       <div className="text-xl md:text-2xl mt-10 w-1/2 [&>p]:mt-8">
-      <p>
-
-      </p>
-      <p>
-        
-      </p>
-      <p>
-        
-      </p>
+      Monk is made to fix simple problems such as kanban boards and note management systems and merge them into one.
       </div>
     </div>
   );

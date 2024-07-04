@@ -12,10 +12,11 @@ const isPublicRoute = createRouteMatcher([
   "/api/webhook",
 ]);
 
+const isMarketingRoute = createRouteMatcher(["/tos", "/about", "/policy"]);
 
 export default clerkMiddleware((auth, req) => {
  
-  if (auth().userId && isPublicRoute(req)) {
+  if (auth().userId && isPublicRoute(req) && !isMarketingRoute(req)) {
     let path = "/select-org";
     
     if (auth().orgId)
