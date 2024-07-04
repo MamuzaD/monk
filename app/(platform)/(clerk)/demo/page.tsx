@@ -33,7 +33,7 @@ export default function DemoPage() {
       <h1 className="text-2xl font-bold">Sign In as Demo User</h1>
       <span className="text-center text-lg">
         Reminder: Changes made using the demo user will be
-        <strong>visible to all other users.</strong> This means that any
+        <strong> visible to all other users.</strong> This means that any
         modifications made by one person using the demo user will be seen by
         others as well.
       </span>

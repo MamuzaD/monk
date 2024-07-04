@@ -60,7 +60,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
       url = stripeSession.url || "";
     }
-  } catch {
+  } catch(error) {
+    console.log(error);
     return {
       error: "Something went wrong with Stripe",
     };
