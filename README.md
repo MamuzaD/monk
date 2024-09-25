@@ -1,8 +1,8 @@
 # Monk
 ### A Next.js Web App with Kanban-style Boards and Block-Based Notes
 
-![Monk App Screenshot](https://monk-board.com/images/notes.webp)
-![Monk App Screenshot](https://monk-board.com/images/notes.webp)
+![Monk Board](https://monk-board.com/images/board.webp)
+![Monk Notes](https://monk-board.com/images/notes.webp)
 
 ### Built With
 #### Frontend
