@@ -33,14 +33,17 @@ export default function LandingPage() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:flex hidden justify-center items-center"
+            className="md:flex hidden justify-center items-center rounded-full animate-bounce"
             onClick={scrollToFeatures}
           >
             <ArrowDown className="h-8 w8" />
           </Button>
         </div>
       </div>
-      <div className="max-w-5xl mx-auto py-12 px-4 mt-32 scroll-m-16" id="features">
+      <div
+        className="max-w-5xl mx-auto py-12 px-4 mt-32 scroll-m-16"
+        id="features"
+      >
         <h1 className="text-xl md:text-3xl text-center mb-8 font-extrabold tracking-wide">
           Kanban Style Boards
         </h1>
@@ -50,9 +53,9 @@ export default function LandingPage() {
           height={900}
           src="/images/board.webp"
           alt="Kanban Style Boards Showcase"
-          className="rounded-lg shadow-lg object-cover mb-12"
+          className="rounded-lg shadow-lg object-cover mb-12 hover:shadow-2xl"
         />
-        <h1 className="text-xl md:text-3xl text-center mb-8 font-extrabold tracking-wide">
+        <h1 className="text-xl md:text-3xl text-center mb-8 font-extrabold tracking-wide ">
           Block Based Notes
         </h1>
         <Image
@@ -61,7 +64,7 @@ export default function LandingPage() {
           height={1080}
           src="/images/notes.webp"
           alt="Block Based Notes showcase"
-          className="rounded-lg shadow-lg object-cover"
+          className="rounded-lg shadow-lg object-cover hover:shadow-2xl"
         />
       </div>
     </>
