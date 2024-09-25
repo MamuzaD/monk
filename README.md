@@ -1,6 +1,6 @@
 # Monk
 ### A Next.js Web App with Kanban-style Boards and Block-Based Notes
-### Check it out [here](monk-board.com)
+### Check it out [here](https://monk-board.com)
 
 <img src="/public/images/board.webp" alt="Monk Board" width="600" />
 <img src="/public/images/notes.webp" alt="Monk Notes" width="600" />
@@ -23,7 +23,7 @@
 
 ## Features
 ### Kanban Style Boards
-- Organize your tasks into a simple format with cards, lists, and boards under an organization (using auth from [Clerk](clerk.com))
+- Organize your tasks into a simple format with cards, lists, and boards under an organization (using auth from [Clerk](https://clerk.com))
 - Tweak card details to your specific needs
 
 ### Block Based Notes
@@ -32,7 +32,7 @@
 - Drag and drop blocks to rearrange content as needed.
 
 ### User Authentication
-- Sign up and log in using [Clerk](clerk.com) for secure user authentication and account management.
+- Sign up and log in using [Clerk](https://clerk.com) for secure user authentication and account management.
 - Manage your boards and notes under your personal account.
 
 ### Payment Integration 
