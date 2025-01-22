@@ -27,13 +27,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         content,
       },
     });
-
-    await createAuditLog({
-      entityId: note.id,
-      entityTitle: note.title,
-      entityType: ENTITY_TYPE.NOTE,
-      action: ACTION.UPDATE,
-    });
   } catch (error) {
     return { error: "Database error when updating" };
   }

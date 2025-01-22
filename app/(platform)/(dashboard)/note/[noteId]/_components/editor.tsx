@@ -78,6 +78,18 @@ export const Editor = ({ note }: EditorProps) => {
     );
   }
 
+  // track the cursor position
+  const saveWithCursor = () => {
+    const textCursorPosition = editor?.getTextCursorPosition();
+
+    saveDebounced(editor.document);
+
+    // restore the cursor position after saving
+    if (textCursorPosition && editor) {
+      editor.setTextCursorPosition(textCursorPosition.block, "end");
+    }
+  };
+
   return (
     <>
       <NoteHeader note={note} />
@@ -85,7 +97,7 @@ export const Editor = ({ note }: EditorProps) => {
         editor={editor}
         theme={theme === "dark" ? "dark" : "light"}
         onChange={() => {
-          saveDebounced(editor.document);
+          saveWithCursor();
         }}
         className="bg-white dark:bg-[#1F1F1F] pt-4 pb-2 rounded-lg"
       />

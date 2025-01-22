@@ -60,7 +60,7 @@ export const Sidebar = ({ storageKey = "sidebar-state" }: SidebarProps) => {
   }
 
   return (
-    <div className="shadow-md rounded-md">
+    <div className="shadow-2xl rounded-md">
       <div className="font-medium text-s flex items-center mb-1">
         <span className="pl-4 ">Workspaces</span>
         <Button
