@@ -48,6 +48,7 @@ export default function LandingPage() {
           Kanban Style Boards
         </h1>
         <Image
+          unoptimized
           loading="eager"
           width={1900}
           height={900}
@@ -59,6 +60,7 @@ export default function LandingPage() {
           Block Based Notes
         </h1>
         <Image
+          unoptimized
           loading="eager"
           width={1920}
           height={1080}
