@@ -1,11 +1,13 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
 }
 
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
+  schemas = ["monk"]
 }
 
 model Board {
@@ -23,6 +25,7 @@ model Board {
   lists         List[]
 
   @@map("Monk_Board")
+  @@schema("monk")
 }
 
 model List {
@@ -37,6 +40,7 @@ model List {
 
   @@index([boardId], map: "List_boardId_idx")
   @@map("Monk_List")
+  @@schema("monk")
 }
 
 model Card {
@@ -51,6 +55,7 @@ model Card {
 
   @@index([listId], map: "Card_listId_idx")
   @@map("Monk_Card")
+  @@schema("monk")
 }
 
 model Note {
@@ -62,6 +67,7 @@ model Note {
   updatedAt DateTime @updatedAt
 
   @@map("Monk_Note")
+  @@schema("monk")
 }
 
 model AuditLog {
@@ -78,6 +84,7 @@ model AuditLog {
   updatedAt   DateTime    @updatedAt
 
   @@map("Monk_AuditLog")
+  @@schema("monk")
 }
 
 model OrgLimit {
@@ -88,6 +95,7 @@ model OrgLimit {
   updatedAt DateTime @updatedAt
 
   @@map("Monk_OrgLimit")
+  @@schema("monk")
 }
 
 model NoteLimit {
@@ -98,6 +106,7 @@ model NoteLimit {
   updatedAt DateTime @updatedAt
 
   @@map("Monk_NoteLimit")
+  @@schema("monk")
 }
 
 model OrgSubscription {
@@ -109,6 +118,7 @@ model OrgSubscription {
   stripeCurrentPeriodEnd DateTime? @map("stripe_current_period_end")
 
   @@map("Monk_OrgSubscription")
+  @@schema("monk")
 }
 
 enum ACTION {
@@ -116,6 +126,8 @@ enum ACTION {
   UPDATE
   DELETE
   RENAME
+
+  @@schema("monk")
 }
 
 enum ENTITY_TYPE {
@@ -123,4 +135,6 @@ enum ENTITY_TYPE {
   NOTE
   LIST
   CARD
+
+  @@schema("monk")
 }
